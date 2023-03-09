@@ -1,21 +1,17 @@
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
-using GooglePlayGames;
+using UnityEngine.UI;
 
+public class Login : MonoBehaviour {
 
-public class login {
+    private Button button;
 
     public void Start() {
-      PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
+        button = GetComponent<Button>();
+        button.onClick.AddListener(TaskOnClick);
     }
 
-    internal void ProcessAuthentication(SignInStatus status) {
-      if (status == SignInStatus.Success) {
-        // Continue with Play Games Services
-      } else {
-        // Disable your integration with Play Games Services or show a login button
-        // to ask users to sign-in. Clicking it should call
-        // PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication).
-      }
+    void TaskOnClick() {
+        Debug.Log("Le bouton a été cliqué !");
     }
+
 }
