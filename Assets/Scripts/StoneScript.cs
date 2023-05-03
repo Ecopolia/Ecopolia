@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class StoneScript : MonoBehaviour
 {
+    private bool isBuilt = false;
     public GameObject buildingPrefab; 
     // private void OnTouchDown()
     // {
@@ -12,6 +13,10 @@ public class StoneScript : MonoBehaviour
         private void OnMouseDown()
     {
         Debug.Log("TestDown");
-        Instantiate(buildingPrefab, new Vector3(transform.position.x, transform.position.y, 10), Quaternion.identity);
+        if(!isBuilt){
+Instantiate(buildingPrefab, new Vector3(transform.position.x, transform.position.y, 10), Quaternion.identity);
+        isBuilt = true;
+        }
+        
     }
 }
