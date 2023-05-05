@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &355957785535577109
+--- !u!1 &2805940971229275720
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 355957785535577104}
-  - component: {fileID: 355957785535577111}
-  - component: {fileID: 355957785535577110}
-  - component: {fileID: 355957785535577105}
+  - component: {fileID: 2805940971229275764}
+  - component: {fileID: 2805940971229275765}
+  - component: {fileID: 2805940971229275722}
+  - component: {fileID: 2805940971229275723}
   m_Layer: 0
-  m_Name: stone2
+  m_Name: ConstructPlace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &355957785535577104
+--- !u!4 &2805940971229275764
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355957785535577109}
+  m_GameObject: {fileID: 2805940971229275720}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.74}
+  m_LocalPosition: {x: 1.5044785, y: -2.216928, z: 5.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &355957785535577111
+--- !u!212 &2805940971229275765
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355957785535577109}
+  m_GameObject: {fileID: 2805940971229275720}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -86,26 +86,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &355957785535577110
+--- !u!114 &2805940971229275722
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355957785535577109}
+  m_GameObject: {fileID: 2805940971229275720}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f183cf2a4bfa78498906c0a95cbdffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingPrefab: {fileID: 6165701784046725160, guid: dce692d27b8664f42b26608d17904107, type: 3}
---- !u!65 &355957785535577105
+  buildingPrefab:
+  - {fileID: 6165701784046725160, guid: dce692d27b8664f42b26608d17904107, type: 3}
+  - {fileID: 1063325123095566351, guid: a98b4ca14ba28994fa6f62a3446cda53, type: 3}
+  - {fileID: 3348051238055440137, guid: 64a9b54568d165743a889e9ef4a6a2bd, type: 3}
+  - {fileID: 6376891483420464763, guid: 8d8e59151f555f54f9a4fe6f46531e66, type: 3}
+  buildMenu: {fileID: 0}
+--- !u!65 &2805940971229275723
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355957785535577109}
+  m_GameObject: {fileID: 2805940971229275720}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
