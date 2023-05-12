@@ -14,8 +14,8 @@ public class StoneScript : MonoBehaviour
     {   
         buildMenu.SetActive(!buildMenu.gameObject.activeSelf);
         selectedStone = this; // Stockage de la pierre sélectionnée
-
     }
+
 
     public void ConstructBuilding(int choice)
     {
