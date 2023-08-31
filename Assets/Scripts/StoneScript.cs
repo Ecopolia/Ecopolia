@@ -8,6 +8,7 @@ public class StoneScript : MonoBehaviour
     public GameObject[] buildingPrefab;
     public GameObject buildMenu;
     public static StoneScript selectedStone; // Ajout de la variable statique
+    private GameObject build;
 
 
     private void OnMouseDown()
@@ -22,8 +23,9 @@ public class StoneScript : MonoBehaviour
 
     public void ConstructBuilding(Building building)
     {
-        if(!isBuilt){
-            Instantiate(building, selectedStone.transform.position, Quaternion.identity);
+        if (!isBuilt)
+        {
+            Instantiate(building, selectedStone.transform.position + new Vector3(0, 0, 50), Quaternion.identity);
             selectedStone.gameObject.SetActive(false);
             isBuilt = true;
         }
