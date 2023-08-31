@@ -11,18 +11,20 @@ public class StoneScript : MonoBehaviour
 
 
     private void OnMouseDown()
-    {   
+    {
+        if(isBuilt){
+            return;
+        }
         buildMenu.SetActive(!buildMenu.gameObject.activeSelf);
         selectedStone = this; // Stockage de la pierre sélectionnée
     }
 
 
-    public void ConstructBuilding(int choice)
+    public void ConstructBuilding(Building building)
     {
         if(!isBuilt){
-            GameObject newBuilding = Instantiate(buildingPrefab[choice], new Vector3(transform.position.x, transform.position.y, 10), Quaternion.identity);
-            // Utilisez "choice" pour déterminer quel type de bâtiment doit être instancié
-            // ...
+            Instantiate(building, selectedStone.transform.position, Quaternion.identity);
+            selectedStone.gameObject.SetActive(false);
             isBuilt = true;
         }
         buildMenu.SetActive(false);
