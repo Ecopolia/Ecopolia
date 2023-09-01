@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class StoneScript : MonoBehaviour
 {
     private bool isBuilt = false;
+    private bool isMenu = false;
     public GameObject[] buildingPrefab;
     public GameObject buildMenu;
     public static StoneScript selectedStone; // Ajout de la variable statique
@@ -13,9 +14,10 @@ public class StoneScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(isBuilt){
+        if(isBuilt || isMenu){
             return;
         }
+        isMenu = true;
         buildMenu.SetActive(!buildMenu.gameObject.activeSelf);
         selectedStone = this; // Stockage de la pierre sélectionnée
     }
@@ -30,5 +32,6 @@ public class StoneScript : MonoBehaviour
             isBuilt = true;
         }
         buildMenu.SetActive(false);
+        isMenu = false;
     }
 }
