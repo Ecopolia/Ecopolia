@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe039f0eedb92e64db3da600d689411e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 10
+  cost: 300
   moneyIncrease: 20
-  timeBtwIncrease: 1
+  woodIncrease: 20
+  timeBtwIncrease: 2

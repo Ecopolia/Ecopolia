@@ -7,6 +7,7 @@ public class Building : MonoBehaviour
 {
     public int cost;
     public int moneyIncrease;
+    public int woodIncrease;
 
     public float timeBtwIncrease;
     private float nextIncreaseTime;
@@ -23,6 +24,7 @@ public class Building : MonoBehaviour
         if(Time.time >= nextIncreaseTime){
             nextIncreaseTime = Time.time + timeBtwIncrease;
             gm.money += moneyIncrease;
+            gm.wood += woodIncrease;
         }
     }
 }

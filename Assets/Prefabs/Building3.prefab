@@ -98,5 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 10
-  moneyIncrease: 3
-  timeBtwIncrease: 2
+  moneyIncrease: 2
+  woodIncrease: 2
+  timeBtwIncrease: 5
