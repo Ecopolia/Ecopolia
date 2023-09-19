@@ -1,0 +1,24 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/UI_Ressources_Overview.uss?fileID=7433441132597879392&amp;guid=017ccad52e46bc64990e3bd6993d1e7c&amp;type=3#UI_Ressources_Overview" />
+    <ui:VisualElement name="root" style="flex-grow: 1; justify-content: flex-end; transition-duration: 2s;">
+        <ui:VisualElement name="overview-container" class="overview-container" style="background-image: url(&apos;project://database/Assets/UI/Wood4Textures/T_Wood4_Color.png?fileID=2800000&amp;guid=5df13b2fdd1e51441a24262e81b7a2cd&amp;type=3#T_Wood4_Color&apos;); justify-content: center; align-items: center;">
+            <ui:VisualElement name="overview-title-banner" class="overview-title-banner">
+                <ui:Label text="Overview" display-tooltip-when-elided="true" name="overview-title-text" style="-unity-font: url(&apos;project://database/Assets/UI/Aniuk-Black.ttf?fileID=12800000&amp;guid=7a9153dbdc606644b982ec3977e1c4ed&amp;type=3#Aniuk-Black&apos;); font-size: 100px; -unity-font-style: normal; color: rgb(255, 255, 255); -unity-font-definition: initial; -unity-text-outline-width: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="overview-ressources-container" class="overview-ressource-container" style="min-width: auto; min-height: auto; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; -unity-text-outline-color: rgb(0, 0, 0); color: rgb(255, 255, 255);">
+                <ui:VisualElement name="overview-ressource-info-1" class="overview-ressource-holder" style="flex-direction: row;">
+                    <ui:VisualElement name="overview-ressource-icon-holder" style="background-color: rgba(255, 255, 255, 255); width: 140px; height: 140px; margin-left: 5%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" />
+                    <ui:Label text="XXX/h" display-tooltip-when-elided="true" name="overview-ressource-gather-data-per-hour-1" style="-unity-font-definition: initial; -unity-font: url(&apos;project://database/Assets/UI/Aniuk-Black.ttf?fileID=12800000&amp;guid=7a9153dbdc606644b982ec3977e1c4ed&amp;type=3#Aniuk-Black&apos;); color: rgba(0, 0, 0, 255); font-size: 80px; margin-left: 200px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="overview-ressource-info-2" class="overview-ressource-holder">
+                    <ui:VisualElement name="overview-ressource-icon-holder" style="background-color: rgb(255, 255, 255); width: 140px; height: 140px; margin-left: 5%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" />
+                    <ui:Label text="XXX/h" display-tooltip-when-elided="true" name="overview-ressource-gather-data-per-hour-2" style="-unity-font-definition: initial; -unity-font: url(&apos;project://database/Assets/UI/Aniuk-Black.ttf?fileID=12800000&amp;guid=7a9153dbdc606644b982ec3977e1c4ed&amp;type=3#Aniuk-Black&apos;); color: rgb(0, 0, 0); font-size: 80px; margin-left: 200px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="overview-ressource-info-3" class="overview-ressource-holder">
+                    <ui:VisualElement name="overview-ressource-icon-holder" style="background-color: rgb(255, 255, 255); width: 140px; height: 140px; margin-left: 5%; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" />
+                    <ui:Label text="XXX/h" display-tooltip-when-elided="true" name="overview-ressource-gather-data-per-hour-3" style="-unity-font-definition: initial; -unity-font: url(&apos;project://database/Assets/UI/Aniuk-Black.ttf?fileID=12800000&amp;guid=7a9153dbdc606644b982ec3977e1c4ed&amp;type=3#Aniuk-Black&apos;); color: rgb(0, 0, 0); font-size: 80px; margin-left: 200px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
