@@ -12,6 +12,8 @@ public class Building : MonoBehaviour
     public float timeBtwIncrease;
     private float nextIncreaseTime;
     private GameManager gm;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,4 +29,15 @@ public class Building : MonoBehaviour
             gm.wood += woodIncrease;
         }
     }
+
+    public float CalculateMoneyRevenuePerHour()
+    {
+        return moneyIncrease * (3600 / timeBtwIncrease);
+    }
+
+    public float CalculateWoodRevenuePerHour()
+    {
+        return woodIncrease * (3600 / timeBtwIncrease);
+    }
+
 }
