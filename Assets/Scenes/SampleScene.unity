@@ -5491,7 +5491,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 825868588}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 922cb214b8e45074fb2c67fec52caa13, type: 3}
+  m_Script: {fileID: 11500000, guid: 8970d6dd1e535714c895d4fd46e2234a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1841754905}
@@ -6719,6 +6719,7 @@ MonoBehaviour:
   moneyDisplay: {fileID: 58244412}
   wood: 100
   woodDisplay: {fileID: 1890384512}
+  buildings: []
 --- !u!4 &1841754906
 Transform:
   m_ObjectHideFlags: 0
@@ -6881,6 +6882,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2126870581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2126870584}
+  - component: {fileID: 2126870583}
+  - component: {fileID: 2126870582}
+  m_Layer: 5
+  m_Name: UI_Build_Menu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2126870582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126870581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403f56c0161a95a438371ce712fec785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2126870583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126870581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: fc33bcea4308eab44a822288df377c85, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: e4c5fb9002690da4da961f0387636e15, type: 3}
+  m_SortingOrder: 0
+--- !u!4 &2126870584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126870581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &854724336176005069
 PrefabInstance:
