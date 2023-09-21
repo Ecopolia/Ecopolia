@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe039f0eedb92e64db3da600d689411e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 54fb866b-285c-4779-bc1d-656b3a5bdbec
   cost: 300
   moneyIncrease: 20
   woodIncrease: 20
