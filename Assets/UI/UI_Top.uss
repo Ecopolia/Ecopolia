@@ -1,0 +1,34 @@
+.ui-top-leaf-box {
+    background-image: url('project://database/Assets/UI/leaf.svg?fileID=7388822144124034973&guid=b03ddb1ad4feae94f9e82102d2f882ed&type=3#leaf');
+    width: 256px;
+    height: 256px;
+    -unity-background-image-tint-color: rgb(214, 214, 214);
+    align-items: center;
+    justify-content: center;
+    -unity-text-align: middle-center;
+    -unity-font-definition: initial;
+    -unity-font: url('project://database/Assets/UI/Xenois%20Soft%20W01%20Bold.ttf?fileID=12800000&guid=e00c215952a0db340915320dcea4e27f&type=3#Xenois Soft W01 Bold');
+    color: rgb(255, 255, 255);
+    font-size: 120%;
+    position: absolute;
+    top: 128px;
+    left: 40%;
+    background-color: rgb(168, 213, 186);
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-right-width: 0;
+    border-left-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.ui-top-ressources-container-row {
+    width: 100%;
+    height: 50%;
+}

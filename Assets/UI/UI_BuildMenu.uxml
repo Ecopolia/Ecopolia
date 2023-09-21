@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/UI_BuildMenu.uss?fileID=7433441132597879392&amp;guid=f744bcee75198c94cae9954d02cad05c&amp;type=3#UI_BuildMenu" />
+    <ui:VisualElement name="root" class="buildmenut-shop-container" style="border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; left: 10%; top: 5%;">
+        <ui:VisualElement name="buildmenu-shop-banner" style="background-color: rgb(139, 82, 40); width: 100%; height: 5%; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; -unity-text-align: middle-left; flex-direction: row; align-items: center; justify-content: center;">
+            <ui:Label text="- Select a Building to contruct - " display-tooltip-when-elided="true" name="buildmenu-shop-title" style="-unity-font: url(&apos;project://database/Assets/UI/Aniuk-Black.ttf?fileID=12800000&amp;guid=7a9153dbdc606644b982ec3977e1c4ed&amp;type=3#Aniuk-Black&apos;); -unity-font-definition: initial; -unity-font-style: normal; font-size: 48px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+            <ui:Button text="X" display-tooltip-when-elided="true" name="buildmenu-shop-close" style="width: 64px; height: 64px; border-top-left-radius: 100px; border-bottom-left-radius: 100px; border-top-right-radius: 100px; border-bottom-right-radius: 100px; background-color: rgb(255, 255, 255); font-size: 32px; -unity-font-definition: initial; -unity-font: url(&apos;project://database/Assets/UI/Aniuk-Black.ttf?fileID=12800000&amp;guid=7a9153dbdc606644b982ec3977e1c4ed&amp;type=3#Aniuk-Black&apos;); margin-left: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; justify-content: center; position: absolute; right: 3%;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="buildmenu-shop-products-container" style="height: 80%; flex-direction: column; flex-wrap: wrap; flex-grow: 0; justify-content: flex-start;">
+            <ui:VisualElement name="build-shop-product-row-1" class="build-shop-product-row" style="margin-top: 20%;">
+                <ui:VisualElement name="buildmenu-shop-building-card-1" class="buildmenu-shop-building-card" />
+                <ui:VisualElement name="buildmenu-shop-building-card-2" class="buildmenu-shop-building-card" />
+            </ui:VisualElement>
+            <ui:VisualElement name="build-shop-product-row-2" class="build-shop-product-row">
+                <ui:VisualElement name="buildmenu-shop-building-card-3" class="buildmenu-shop-building-card" />
+                <ui:VisualElement name="buildmenu-shop-building-card-4" class="buildmenu-shop-building-card" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Label text="This is where you buy buildings! &#10;Time to build your Empire." display-tooltip-when-elided="true" name="buildmenu-shop-description" style="-unity-text-align: middle-center; -unity-font-definition: initial; -unity-font: url(&apos;project://database/Assets/UI/Aniuk-Black.ttf?fileID=12800000&amp;guid=7a9153dbdc606644b982ec3977e1c4ed&amp;type=3#Aniuk-Black&apos;); font-size: 48px; width: 100%; height: 10%; margin-top: 2%;" />
+    </ui:VisualElement>
+</ui:UXML>
