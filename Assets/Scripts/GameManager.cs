@@ -4,14 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IDataPersistence
 {
     public int money;
     public Text moneyDisplay;
     public int wood;
     public Text woodDisplay;
-    // Start is called before the first frame update
-    private Building buildingToPlace;
     public List<Building> buildings = new List<Building>();
     // Update is called once per frame
     void Update()
@@ -24,7 +22,6 @@ public class GameManager : MonoBehaviour
     {
         if(money >= building.cost){
             money -= building.cost;
-            buildingToPlace = building;
             buildings.Add(building);
             StoneScript.selectedStone.ConstructBuilding(building);
         }
@@ -48,5 +45,15 @@ public class GameManager : MonoBehaviour
             sum += building.CalculateWoodRevenuePerHour();
         }
         return sum;
+    }
+
+    public void LoadData(GameData data){
+        this.money = data.money;
+        this.wood = data.wood;
+    }
+
+    public void SaveData(ref GameData data){
+        data.money = this.money;
+        data.wood = this.wood;
     }
 }

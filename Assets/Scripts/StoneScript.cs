@@ -2,15 +2,21 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
-public class StoneScript : MonoBehaviour
+public class StoneScript : MonoBehaviour, IDataPersistence
 {
+    [SerializeField] private string id;
+
+    [ContextMenu("Generate unique id")]
+    private void GenerateId(){
+        id = System.Guid.NewGuid().ToString();
+    }
     private bool isBuilt = false;
     private bool isMenu = false;
-    public GameObject[] buildingPrefab;
+    public Building[] buildingPrefab;
     public GameObject buildMenu;
-    public static StoneScript selectedStone; // Ajout de la variable statique
-    private GameObject build;
-
+    public static StoneScript selectedStone;
+    private Building build = null;
+    private GameManager gm;
 
     private void OnMouseDown()
     {
@@ -19,7 +25,7 @@ public class StoneScript : MonoBehaviour
         }
         isMenu = true;
         buildMenu.SetActive(!buildMenu.gameObject.activeSelf);
-        selectedStone = this; // Stockage de la pierre sélectionnée
+        selectedStone = this;
     }
 
 
@@ -27,11 +33,38 @@ public class StoneScript : MonoBehaviour
     {
         if (!isBuilt)
         {
-            Instantiate(building, selectedStone.transform.position + new Vector3(0, 0, 50), Quaternion.identity);
-            selectedStone.gameObject.SetActive(false);
+            Instantiate(building, this.transform.position + new Vector3(0, 0, 50), Quaternion.identity);
+            this.gameObject.SetActive(false);
             isBuilt = true;
+            build = building;
         }
         buildMenu.SetActive(false);
         isMenu = false;
+    }
+
+    public void LoadData(GameData data){
+        string idBuilding;
+
+        gm = FindObjectOfType<GameManager>();
+
+        if (data.stone.TryGetValue(id, out idBuilding))
+        {
+            foreach (Building building in buildingPrefab)
+            {
+                if (building.id == idBuilding)
+                {
+                    gm.buildings.Add(building);
+                    ConstructBuilding(building);
+                }
+            }
+        }
+    }
+
+    public void SaveData(ref GameData data){
+        if(data.stone.ContainsKey(id)){
+            data.stone.Remove(id);
+        }
+
+        data.stone.Add(id, build ? build.id : null);
     }
 }

@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class Building : MonoBehaviour
 {
+    [SerializeField] public string id;
+
+    [ContextMenu("Generate unique id")]
+    private void GenerateId(){
+        id = System.Guid.NewGuid().ToString();
+    }
     public int cost;
     public int moneyIncrease;
     public int woodIncrease;
