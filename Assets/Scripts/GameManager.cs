@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
     {
         moneyDisplay.text = money.ToString();
         woodDisplay.text = wood.ToString();
+
+        
     }
 
     public void BuyBuilding(Building building)
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
             money -= building.cost;
             buildings.Add(building);
             StoneScript.selectedStone.ConstructBuilding(building);
+
         }
     }
 
