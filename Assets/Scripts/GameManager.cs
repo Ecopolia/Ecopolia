@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public int wood;
     public Text woodDisplay;
     public List<Building> buildings = new List<Building>();
+    public List<Building> buildingsPrefabs = new List<Building>();
     // Update is called once per frame
     void Update()
     {
