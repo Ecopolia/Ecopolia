@@ -11,7 +11,10 @@ public class TechEngine : MonoBehaviour
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
-        increaseMoney(10);
+        // Exemple la commande se lance direct on start si tu l'attache a un gameobject sur la scene
+        // les changements se font sur l'object dans le dossier prefabs et buildings du coup
+        // si tu met pas d'id ca increase sur tout buildings sympa pour faire un upgrade all
+        // increaseMoney(10,"5dfae78f-b9f3-43ff-a2d6-ad51316a4b3f");
     }
     public void increaseMoney(int percent, string id = null){
 
@@ -19,11 +22,15 @@ public class TechEngine : MonoBehaviour
         {
             if(id != null){
                 if(id == building.id){
-                    building.moneyIncrease = (percent/building.moneyIncrease) * 100;
+                    Debug.Log(building.moneyIncrease);
+                    building.moneyIncrease = Mathf.RoundToInt(building.moneyIncrease * (1 + percent / 100.0f));
+                    Debug.Log(building.moneyIncrease);
+
                 }
             } else {
+                if(building.moneyIncrease != 0){
                 building.moneyIncrease = (percent/building.moneyIncrease) * 100;
-            }
+            }}
   
         }
         
