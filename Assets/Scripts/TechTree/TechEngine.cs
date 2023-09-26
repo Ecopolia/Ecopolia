@@ -21,23 +21,23 @@ public class TechEngine : MonoBehaviour
         Debug.Log(gm.buildingsPrefabs.Count);
         if(id != null){
             foreach (Building building in gm.buildingsPrefabs)
-        {
+            {
             
-            if(id == building.id){
-                Debug.Log(building.moneyIncrease);
-                building.moneyIncrease = Mathf.RoundToInt(building.moneyIncrease * (1 + percent / 100.0f));
-                Debug.Log(building.moneyIncrease);
+                if(id == building.id){
+                    Debug.Log(building.moneyIncrease);
+                    building.moneyIncrease = Mathf.RoundToInt(building.moneyIncrease * (1 + percent / 100.0f));
+                    Debug.Log(building.moneyIncrease);
 
-            }  
-        }
+                }  
+            }
         }
         else {
             foreach (Building building in gm.buildingsPrefabs)
-        {
-            if(id == building.id){
-                building.moneyIncrease = Mathf.RoundToInt(building.moneyIncrease * (1 + percent / 100.0f));
-            }  
-        }
+            {
+                if(building.increaseMoney != 0){
+                    building.moneyIncrease = Mathf.RoundToInt(building.moneyIncrease * (1 + percent / 100.0f));
+                }
+            }
         }
         
     }
