@@ -34,7 +34,7 @@ public class TechEngine : MonoBehaviour
         else {
             foreach (Building building in gm.buildingsPrefabs)
             {
-                if(building.increaseMoney != 0){
+                if(building.moneyIncrease != 0){
                     building.moneyIncrease = Mathf.RoundToInt(building.moneyIncrease * (1 + percent / 100.0f));
                 }
             }
