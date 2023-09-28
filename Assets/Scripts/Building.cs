@@ -11,15 +11,19 @@ public class Building : MonoBehaviour
     private void GenerateId(){
         id = System.Guid.NewGuid().ToString();
     }
-    public int cost;
+    public int moneyCost;
+    public int woodCost;
     public int moneyIncrease;
     public int woodIncrease;
-
     public float timeBtwIncrease;
     private float nextIncreaseTime;
     private GameManager gm;
+    public StoneScript stone;
 
-
+    private void OnMouseDown()
+    {
+        // call coroutine menuAmelio ici
+    }
     // Start is called before the first frame update
     void Start()
     {

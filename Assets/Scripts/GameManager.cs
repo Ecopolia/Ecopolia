@@ -12,22 +12,77 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public Text woodDisplay;
     public List<Building> buildings = new List<Building>();
     public List<Building> buildingsPrefabs = new List<Building>();
+
     // Update is called once per frame
     void Update()
     {
         moneyDisplay.text = money.ToString();
-        woodDisplay.text = wood.ToString();
-
-        
+        woodDisplay.text = wood.ToString();    
     }
 
     public void BuyBuilding(Building building)
     {
-        if(money >= building.cost){
-            money -= building.cost;
-            buildings.Add(building);
-            StoneScript.selectedStone.ConstructBuilding(building);
+        
+        if(building.moneyCost != 0 && building.woodCost != 0) {
+            if(money >= building.moneyCost && wood >= building.woodCost){
+                money -= building.moneyCost;
+                wood -= building.woodCost;
+                buildings.Add(building);
+                ConstructBuilding(building, StoneScript.selectedStone, null);
+            } else {
+                StoneScript.selectedStone.SetBuild(null);
+            }
 
+        } else if (building.moneyCost != 0) {
+            if(money >= building.moneyCost) {
+
+                money -= building.moneyCost;
+                buildings.Add(building);
+                ConstructBuilding(building, StoneScript.selectedStone, null);
+            } else {
+                StoneScript.selectedStone.SetBuild(null);
+            }
+
+        } else if (building.woodCost != 0) {
+            if(wood >= building.woodCost) {
+                wood -= building.woodCost;
+                buildings.Add(building);
+                ConstructBuilding(building, StoneScript.selectedStone, null);
+            } else {
+                StoneScript.selectedStone.SetBuild(null);
+            }
+
+        } else {
+            buildings.Add(building);
+            ConstructBuilding(building, StoneScript.selectedStone, null);
+        }
+
+    }
+
+    public void ConstructBuilding(Building buildingToPlace, StoneScript stone, Building buildingToUp = null)
+    {
+        if(stone && !buildingToUp){
+            Instantiate(buildingToPlace, stone.transform.position + new Vector3(0, 0, 50), Quaternion.identity);
+            stone.gameObject.SetActive(false);
+            stone.SetBuild(buildingToPlace);
+        }
+
+        if(buildingToUp){
+            Instantiate(buildingToPlace, buildingToUp.transform.position + new Vector3(0, 0, 50), Quaternion.identity);
+            buildingToUp.gameObject.SetActive(false);
+        }
+
+        buildingToPlace.stone = stone;
+
+        
+    }
+
+    public void SetMenu(bool menu){
+        StoneScript[] stoneScripts = FindObjectsOfType<StoneScript>();
+
+        foreach (StoneScript stoneScript in stoneScripts)
+        {
+            stoneScript.isMenu = menu;
         }
     }
 

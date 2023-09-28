@@ -98,7 +98,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 5dfae78f-b9f3-43ff-a2d6-ad51316a4b3f
-  cost: 15
+  moneyCost: 15
+  woodCost: 5
   moneyIncrease: 5
   woodIncrease: 0
   timeBtwIncrease: 2
+  stone: {fileID: 0}
