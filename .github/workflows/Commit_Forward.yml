@@ -26,7 +26,7 @@ jobs:
       - name: Push to GitLab
         run: |
           # Set your GitLab repository URL
-          gitlab_repo_url="https://gitlab.com/your-username/your-gitlab-repo.git"
+          gitlab_repo_url="https://rendu-git.etna-alternance.net/module-9251/activity-50408/group-996424.git"
 
           # Push to GitLab repository while preserving the original author's information
           git remote add gitlab $gitlab_repo_url
