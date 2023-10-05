@@ -62,13 +62,13 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public void ConstructBuilding(Building buildingToPlace, StoneScript stone, Building buildingToUp = null)
     {
         if(stone && !buildingToUp){
-            Instantiate(buildingToPlace, stone.transform.position + new Vector3(0, 0, 50), Quaternion.identity);
+            Instantiate(buildingToPlace, stone.transform.position, Quaternion.identity);
             stone.gameObject.SetActive(false);
             stone.SetBuild(buildingToPlace);
         }
 
         if(buildingToUp){
-            Instantiate(buildingToPlace, buildingToUp.transform.position + new Vector3(0, 0, 50), Quaternion.identity);
+            Instantiate(buildingToPlace, buildingToUp.transform.position, Quaternion.identity);
             buildingToUp.gameObject.SetActive(false);
         }
 
