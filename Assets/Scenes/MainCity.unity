@@ -366,6 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403f56c0161a95a438371ce712fec785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingPrefab: []
 --- !u!1 &103949414 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 854724336074152875, guid: 8aa1f014101c0f7428d9cd6bcc5abb37, type: 3}
@@ -3745,16 +3746,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 8, y: 2, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 10
-      m_TileSpriteIndex: 10
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 9, y: 2, z: 0}
     second:
       serializedVersion: 2
@@ -5247,7 +5238,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 74d3f8f82eec3594b9e2f71cd1d2df2a, type: 2}
   - m_RefCount: 12
     m_Data: {fileID: 11400000, guid: a3ec9d38da7ce254e9c6afc9db3f2aad, type: 2}
-  - m_RefCount: 213
+  - m_RefCount: 212
     m_Data: {fileID: 11400000, guid: 97b414390422adc4995e8c0d2cb2df91, type: 2}
   - m_RefCount: 12
     m_Data: {fileID: 11400000, guid: b33da54cfcc18a54abe6b0e8195e47f3, type: 2}
@@ -5278,7 +5269,7 @@ Tilemap:
     m_Data: {fileID: -736955483, guid: 13d91cc2b60502c4e9751049c959cc2c, type: 3}
   - m_RefCount: 12
     m_Data: {fileID: 924561697, guid: 13d91cc2b60502c4e9751049c959cc2c, type: 3}
-  - m_RefCount: 213
+  - m_RefCount: 212
     m_Data: {fileID: -524559930, guid: 13d91cc2b60502c4e9751049c959cc2c, type: 3}
   - m_RefCount: 12
     m_Data: {fileID: -93039094, guid: 13d91cc2b60502c4e9751049c959cc2c, type: 3}
@@ -5289,7 +5280,7 @@ Tilemap:
   - m_RefCount: 152
     m_Data: {fileID: -1279772992, guid: 13d91cc2b60502c4e9751049c959cc2c, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 432
+  - m_RefCount: 431
     m_Data:
       e00: 1
       e01: 0
@@ -5308,7 +5299,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 432
+  - m_RefCount: 431
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -5528,7 +5519,7 @@ PrefabInstance:
     - target: {fileID: 2805940971229275722, guid: 830ae26395509cb418ab5a5edc8e8d41, type: 3}
       propertyPath: buildMenu
       value: 
-      objectReference: {fileID: 103949414}
+      objectReference: {fileID: 2126870581}
     - target: {fileID: 2805940971229275722, guid: 830ae26395509cb418ab5a5edc8e8d41, type: 3}
       propertyPath: buildingPrefab.Array.data[0]
       value: 
@@ -5663,7 +5654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &825868589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5908,7 +5899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1023710139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7286,7 +7277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2126870582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7299,6 +7290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403f56c0161a95a438371ce712fec785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingPrefab:
+  - {fileID: 1710117127348625435, guid: d244e78d75a42ca4182772873b5896a8, type: 3}
 --- !u!114 &2126870583
 MonoBehaviour:
   m_ObjectHideFlags: 0
