@@ -4716,6 +4716,9 @@ MonoBehaviour:
   woodIncrease: 10
   timeBtwIncrease: 5
   stone: {fileID: 0}
+  buildingToPlace: {fileID: 0}
+  timeToBuild: 10
+  timeBuild: 0
 --- !u!1 &5795330782354069840
 GameObject:
   m_ObjectHideFlags: 0
