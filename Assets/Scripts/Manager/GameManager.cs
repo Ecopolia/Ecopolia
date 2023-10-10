@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public List<Building> buildings = new List<Building>();
     public List<Building> buildingsPrefabs = new List<Building>();
 
+    public Building chantier;
+
     // Update is called once per frame
     void Update()
     {
@@ -23,38 +25,13 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public void BuyBuilding(Building building)
     {
         
-        if(building.moneyCost != 0 && building.woodCost != 0) {
-            if(money >= building.moneyCost && wood >= building.woodCost){
-                money -= building.moneyCost;
-                wood -= building.woodCost;
-                buildings.Add(building);
-                ConstructBuilding(building, StoneScript.selectedStone, null);
-            } else {
-                StoneScript.selectedStone.SetBuild(null);
-            }
-
-        } else if (building.moneyCost != 0) {
-            if(money >= building.moneyCost) {
-
-                money -= building.moneyCost;
-                buildings.Add(building);
-                ConstructBuilding(building, StoneScript.selectedStone, null);
-            } else {
-                StoneScript.selectedStone.SetBuild(null);
-            }
-
-        } else if (building.woodCost != 0) {
-            if(wood >= building.woodCost) {
-                wood -= building.woodCost;
-                buildings.Add(building);
-                ConstructBuilding(building, StoneScript.selectedStone, null);
-            } else {
-                StoneScript.selectedStone.SetBuild(null);
-            }
-
-        } else {
-            buildings.Add(building);
+        if ((building.moneyCost == 0 || money >= building.moneyCost) && (building.woodCost == 0 || wood >= building.woodCost)) {
+            if (building.moneyCost > 0) money -= building.moneyCost;
+            if (building.woodCost > 0) wood -= building.woodCost;
+            
             ConstructBuilding(building, StoneScript.selectedStone, null);
+        } else {
+            StoneScript.selectedStone.SetBuild(null);
         }
 
     }
@@ -62,18 +39,21 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public void ConstructBuilding(Building buildingToPlace, StoneScript stone, Building buildingToUp = null)
     {
         if(stone && !buildingToUp){
-            Instantiate(buildingToPlace, stone.transform.position, Quaternion.identity);
+            chantier.buildingToPlace = buildingToPlace;
+            chantier.timeBuild = Time.time + buildingToPlace.timeToBuild;
+            Instantiate(chantier, stone.transform.position, Quaternion.identity);
             stone.gameObject.SetActive(false);
             stone.SetBuild(buildingToPlace);
         }
 
         if(buildingToUp){
+            buildings.Add(buildingToPlace);
+            buildings.Remove(buildingToUp);
             Instantiate(buildingToPlace, buildingToUp.transform.position, Quaternion.identity);
             buildingToUp.gameObject.SetActive(false);
         }
 
         buildingToPlace.stone = stone;
-
         
     }
 

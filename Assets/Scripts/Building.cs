@@ -20,6 +20,12 @@ public class Building : MonoBehaviour
     private GameManager gm;
     public StoneScript stone;
 
+    public Building buildingToPlace = null;
+
+    public float timeToBuild;
+    public float timeBuild = 0;
+    private float timeLeft = 0;
+
     private void OnMouseDown()
     {
         // call coroutine menuAmelio ici
@@ -37,6 +43,15 @@ public class Building : MonoBehaviour
             nextIncreaseTime = Time.time + timeBtwIncrease;
             gm.money += moneyIncrease;
             gm.wood += woodIncrease;
+        }
+
+
+        if(buildingToPlace != null){
+            if(Time.time >= timeBuild){
+                gm.ConstructBuilding(buildingToPlace, null, this);
+            } else {
+                timeLeft = timeBuild - Time.time;
+            }
         }
     }
 
