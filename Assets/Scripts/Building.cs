@@ -24,7 +24,7 @@ public class Building : MonoBehaviour
 
     public float timeToBuild;
     public float timeBuild = 0;
-    private float timeLeft = 0;
+    public float timeLeft = 0;
 
     private void OnMouseDown()
     {

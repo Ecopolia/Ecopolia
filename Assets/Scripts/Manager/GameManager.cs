@@ -36,11 +36,19 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     }
 
-    public void ConstructBuilding(Building buildingToPlace, StoneScript stone, Building buildingToUp = null)
+    public void ConstructBuilding(Building buildingToPlace, StoneScript stone, Building buildingToUp = null, float timeLeft = -1)
     {
         if(stone && !buildingToUp){
             chantier.buildingToPlace = buildingToPlace;
-            chantier.timeBuild = Time.time + buildingToPlace.timeToBuild;
+            if(timeLeft == 0){
+                chantier.timeBuild = 0;
+            } else if(timeLeft != -1) {
+                chantier.timeBuild = Time.time + buildingToPlace.timeToBuild - timeLeft;
+            } else {
+                chantier.timeBuild = Time.time + buildingToPlace.timeToBuild;
+            }
+
+            
             Instantiate(chantier, stone.transform.position, Quaternion.identity);
             stone.gameObject.SetActive(false);
             stone.SetBuild(buildingToPlace);
@@ -51,6 +59,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
             buildings.Remove(buildingToUp);
             Instantiate(buildingToPlace, buildingToUp.transform.position, Quaternion.identity);
             buildingToUp.gameObject.SetActive(false);
+            buildingToUp.stone.build = buildingToPlace;
         }
 
         buildingToPlace.stone = stone;

@@ -107,3 +107,4 @@ MonoBehaviour:
   buildingToPlace: {fileID: 0}
   timeToBuild: 10
   timeBuild: 0
+  timeLeft: 0

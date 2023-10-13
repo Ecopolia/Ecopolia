@@ -15,7 +15,7 @@ public class StoneScript : MonoBehaviour, IDataPersistence
     public Building[] buildingPrefab;
     public GameObject buildMenu;
     public static StoneScript selectedStone;
-    private Building build = null;
+    public Building build = null;
     private GameManager gm;
 
     void Start() {
@@ -44,6 +44,7 @@ public class StoneScript : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data){
         string idBuilding;
+        float timeLeft;
 
         gm = FindObjectOfType<GameManager>();
 
@@ -53,8 +54,13 @@ public class StoneScript : MonoBehaviour, IDataPersistence
             {
                 if (building.id == idBuilding)
                 {
+                    if (data.stoneBuild.TryGetValue(id, out timeLeft)){
+                        gm.ConstructBuilding(building, this, null, timeLeft);
+                    } else {
+                        gm.ConstructBuilding(building, this);
+                    }
+
                     gm.buildings.Add(building);
-                    gm.ConstructBuilding(building, this);
                 }
             }
         }
@@ -66,5 +72,11 @@ public class StoneScript : MonoBehaviour, IDataPersistence
         }
 
         data.stone.Add(id, build ? build.id : null);
+
+        if(data.stoneBuild.ContainsKey(id)){
+            data.stoneBuild.Remove(id);
+        }
+
+        data.stoneBuild.Add(id, build ? build.timeLeft : 0);
     }
 }
