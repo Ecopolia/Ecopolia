@@ -7,11 +7,17 @@
         </ui:VisualElement>
         <ui:VisualElement name="buildmenu-shop-products-container" style="height: 80%; flex-direction: column; flex-wrap: wrap; flex-grow: 0; justify-content: flex-start;">
             <ui:VisualElement name="build-shop-product-row-1" class="build-shop-product-row" style="margin-top: 20%;">
-                <ui:VisualElement name="buildmenu-shop-building-card-1" class="buildmenu-shop-building-card" />
-                <ui:VisualElement name="buildmenu-shop-building-card-2" class="buildmenu-shop-building-card" />
+                <ui:VisualElement name="buildmenu-shop-building-card-1" class="buildmenu-shop-building-card">
+                    <ui:IMGUIContainer style="flex-grow: 1; background-image: url(&apos;project://database/Assets/Prefabs/Assets/BigHouseBlue.png?fileID=2800000&amp;guid=8272cb134e0464446b4b5ad69ec82862&amp;type=3#BigHouseBlue&apos;);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="buildmenu-shop-building-card-2" class="buildmenu-shop-building-card">
+                    <ui:IMGUIContainer style="flex-grow: 1; background-image: url(&apos;project://database/Assets/Prefabs/Assets/BigHouseGreen.png?fileID=2800000&amp;guid=dc4876cb159a868408e423fe00e230bf&amp;type=3#BigHouseGreen&apos;);" />
+                </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="build-shop-product-row-2" class="build-shop-product-row">
-                <ui:VisualElement name="buildmenu-shop-building-card-3" class="buildmenu-shop-building-card" />
+                <ui:VisualElement name="buildmenu-shop-building-card-3" class="buildmenu-shop-building-card">
+                    <ui:IMGUIContainer style="flex-grow: 1; background-image: url(&apos;project://database/Assets/Prefabs/Assets/SmallHouseBlue.png?fileID=2800000&amp;guid=ad60ba5a656c7494a88b993f82a4ddad&amp;type=3#SmallHouseBlue&apos;);" />
+                </ui:VisualElement>
                 <ui:VisualElement name="buildmenu-shop-building-card-4" class="buildmenu-shop-building-card" />
             </ui:VisualElement>
         </ui:VisualElement>
