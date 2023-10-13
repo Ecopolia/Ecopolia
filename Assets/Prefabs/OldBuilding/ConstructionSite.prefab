@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7691896147327438714}
   - component: {fileID: 1710117127348625435}
   m_Layer: 0
-  m_Name: Building2
+  m_Name: ConstructionSite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8272cb134e0464446b4b5ad69ec82862, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 708693565e717c449a3cdf5c47434997, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,13 +97,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe039f0eedb92e64db3da600d689411e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 5dfae78f-b9f3-43ff-a2d6-ad51316a4b3f
-  moneyCost: 15
-  woodCost: 5
-  moneyIncrease: 5
+  id: 54fb866b-285c-4779-bc1d-656b3a5bdbec
+  moneyCost: 0
+  woodCost: 0
+  moneyIncrease: 0
   woodIncrease: 0
-  timeBtwIncrease: 2
+  timeBtwIncrease: 0
   stone: {fileID: 0}
-  buildingToPlace: {fileID: 0}
-  timeToBuild: 10
-  timeBuild: 0
+  buildingToPlace: {fileID: 1710117127348625435, guid: d244e78d75a42ca4182772873b5896a8, type: 3}
+  timeToBuild: 0
+  timeBuild: 10
