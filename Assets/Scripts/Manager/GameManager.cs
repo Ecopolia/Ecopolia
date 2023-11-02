@@ -18,11 +18,6 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     void Start(){
         stones.AddRange(FindObjectsOfType<StoneScript>(true));
-        foreach (var stone in stones)
-        {
-            Debug.Log("stones");
-            Debug.Log(stone);
-        }
         
     }
     // Update is called once per frame
@@ -34,16 +29,31 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     public void BuyBuilding(Building building)
     {
-        
         if ((building.moneyCost == 0 || money >= building.moneyCost) && (building.woodCost == 0 || wood >= building.woodCost)) {
             if (building.moneyCost > 0) money -= building.moneyCost;
             if (building.woodCost > 0) wood -= building.woodCost;
             
             ConstructBuilding(building, StoneScript.selectedStone, null);
         } else {
+            // mettre message alert nomoney
+            Debug.Log("no money or wood");
             StoneScript.selectedStone.SetBuild(null);
         }
 
+    }
+
+    public bool UpBuilding(Building buildingUp, Building buildingToReplace){
+        if ((buildingUp.moneyCost == 0 || money >= buildingUp.moneyCost) && (buildingUp.woodCost == 0 || wood >= buildingUp.woodCost)) {
+            if (buildingUp.moneyCost > 0) money -= buildingUp.moneyCost;
+            if (buildingUp.woodCost > 0) wood -= buildingUp.woodCost;
+            
+            ConstructBuilding(buildingUp, buildingToReplace.stone, buildingToReplace);
+            return true;
+        } else {
+            // mettre message alert nomoney
+            Debug.Log("no money or wood");
+            return false;
+        }
     }
 
     public void ConstructBuilding(Building buildingToPlace, StoneScript stone, Building buildingToUp = null, float timeLeft = -1)

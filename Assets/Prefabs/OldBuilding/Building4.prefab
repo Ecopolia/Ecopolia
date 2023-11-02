@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6131383266997051153}
   - component: {fileID: 7691896147327438714}
   - component: {fileID: 1710117127348625435}
+  - component: {fileID: 8321181263340430169}
   m_Layer: 0
   m_Name: Building4
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1404648469261915705}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1633.2996, y: 1160.2024, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -109,3 +110,18 @@ MonoBehaviour:
   timeBuild: 0
   timeLeft: 0
   buildingName: building 4
+  buttonObject: {fileID: 5774284580129060958, guid: 25e8ff976cb950f49afa0b87d2d8facd, type: 3}
+  buildingUp: {fileID: 0}
+--- !u!65 &8321181263340430169
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404648469261915705}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.97, y: 4.34, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
