@@ -28,7 +28,7 @@ public class Building : MonoBehaviour
 
     private void OnMouseDown()
     {
-        // call coroutine menuAmelio ici
+        
     }
     // Start is called before the first frame update
     void Start()

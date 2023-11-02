@@ -12,9 +12,19 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public Text woodDisplay;
     public List<Building> buildings = new List<Building>();
     public List<Building> buildingsPrefabs = new List<Building>();
+    public List<StoneScript> stones = new List<StoneScript>();
 
     public Building chantier;
 
+    void Start(){
+        var allStones = FindObjectsOfType<StoneScript>();
+        foreach (var stone in allStones)
+        {
+            
+            stones.Add(stone);
+        }
+        Debug.Log(stones);
+    }
     // Update is called once per frame
     void Update()
     {
