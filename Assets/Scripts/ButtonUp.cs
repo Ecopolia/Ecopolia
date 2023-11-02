@@ -9,7 +9,9 @@ public class ButtonUp : MonoBehaviour
     public Building buildingToReplace;
     
     private void OnMouseDown(){
-        gm.ConstructBuilding(buildingUp, null, buildingToReplace);
+        if(gm.UpBuilding(buildingUp, buildingToReplace)){
+            Destroy(this.gameObject);
+        }
     }
     // Start is called before the first frame update
     void Start()

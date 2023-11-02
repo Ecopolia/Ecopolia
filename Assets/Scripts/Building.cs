@@ -29,26 +29,31 @@ public class Building : MonoBehaviour
     public string buildingName;
     private bool buttonActive = false;
     public ButtonUp buttonObject;
+    private ButtonUp buttonUpActive;
     public Building buildingUp;
 
     private void OnMouseDown()
     {
-        if (buttonActive)
-        {
-            buttonObject.transform.position = new Vector3(transform.position.x, transform.position.y, 50f);
-            buttonObject.gameObject.SetActive(false);
-            buttonObject.buildingUp = null;
-            buttonObject.buildingToReplace = null;
-            buttonActive = false;
+        if(buildingUp){
+            Debug.Log("buildingUp");
+            if (buttonActive)
+            {
+                Destroy(buttonUpActive.gameObject);
+                buttonUpActive = null;
+                buttonActive = false;
+                GetComponent<Collider>().isTrigger = true;
+            }
+            else
+            {
+                buttonUpActive = Instantiate(buttonObject, new Vector3(transform.position.x, transform.position.y-1, 50f), Quaternion.identity);
+                buttonUpActive.gameObject.SetActive(true);
+                buttonUpActive.buildingUp = buildingUp;
+                buttonUpActive.buildingToReplace = this;
+                buttonActive = true;
+                GetComponent<Collider>().isTrigger = false;
+            }
         }
-        else
-        {
-            buttonObject.transform.position = new Vector3(50f, 50f, 50f);
-            buttonObject.gameObject.SetActive(true);
-            buttonObject.buildingUp = buildingUp;
-            buttonObject.buildingToReplace = this;
-            buttonActive = true;
-        }
+        
     }
     // Start is called before the first frame update
     void Start()

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1404648469261915705
+--- !u!1 &5774284580129060957
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6131383266997051153}
-  - component: {fileID: 7691896147327438714}
-  - component: {fileID: 1710117127348625435}
-  - component: {fileID: 476768312506935499}
+  - component: {fileID: 5774284580129060959}
+  - component: {fileID: 5774284580129060956}
+  - component: {fileID: 5774284580129060958}
+  - component: {fileID: 4395381806857585778}
   m_Layer: 0
-  m_Name: Building3
+  m_Name: ButtonUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6131383266997051153
+  m_IsActive: 0
+--- !u!4 &5774284580129060959
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1404648469261915705}
+  m_GameObject: {fileID: 5774284580129060957}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1633.2996, y: 1160.2024, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalPosition: {x: 3.017, y: 2.252, z: 50}
+  m_LocalScale: {x: 0.45, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7691896147327438714
+--- !u!212 &5774284580129060956
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1404648469261915705}
+  m_GameObject: {fileID: 5774284580129060957}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1928346043, guid: 21d17b9277996ac4295e859deae96a05, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 0.065969944, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -86,42 +86,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1710117127348625435
+--- !u!114 &5774284580129060958
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1404648469261915705}
+  m_GameObject: {fileID: 5774284580129060957}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe039f0eedb92e64db3da600d689411e, type: 3}
+  m_Script: {fileID: 11500000, guid: 9729f8c9b992f5949a27954999108461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 011a9b8e-5e08-4378-80d1-6953a89b9ecb
-  moneyCost: 5
-  woodCost: 5
-  moneyIncrease: 2
-  woodIncrease: 2
-  timeBtwIncrease: 5
-  stone: {fileID: 0}
-  buildingToPlace: {fileID: 0}
-  timeToBuild: 0
-  timeBuild: 0
-  timeLeft: 0
-  buildingName: building 3
-  buttonObject: {fileID: 5774284580129060958, guid: 25e8ff976cb950f49afa0b87d2d8facd, type: 3}
-  buildingUp: {fileID: 1710117127348625435, guid: 8b1f0fa825a1b0f47b293ac53836adb0, type: 3}
---- !u!65 &476768312506935499
+  buildingUp: {fileID: 0}
+  buildingToReplace: {fileID: 0}
+--- !u!65 &4395381806857585778
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1404648469261915705}
+  m_GameObject: {fileID: 5774284580129060957}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.4375, y: 4.5625, z: 0.2}
+  m_Size: {x: 1, y: 1, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
