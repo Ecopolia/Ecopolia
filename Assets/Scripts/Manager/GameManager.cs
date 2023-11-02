@@ -17,13 +17,13 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public Building chantier;
 
     void Start(){
-        var allStones = FindObjectsOfType<StoneScript>();
-        foreach (var stone in allStones)
+        stones.AddRange(FindObjectsOfType<StoneScript>());
+        foreach (var stone in stones)
         {
-            
-            stones.Add(stone);
+            Debug.Log("t");
+            Debug.Log(stone);
         }
-        Debug.Log(stones);
+        
     }
     // Update is called once per frame
     void Update()

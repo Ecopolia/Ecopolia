@@ -27,10 +27,28 @@ public class Building : MonoBehaviour
     public float timeLeft = 0;
 
     public string buildingName;
+    private bool buttonActive = false;
+    public GameObject buttonObject;
+    public string buildingUp;
 
     private void OnMouseDown()
     {
-        
+        // if (buttonActive)
+        // {
+        //     buttonObject.transform.position = new Vector3(transform.position.x, transform.position.y, 50f);
+        //     buttonObject.SetActive(false);
+        //     buttonObject.buildingUp = null;
+        //     buttonObject.buildingToReplace = null;
+        //     buttonActive = false;
+        // }
+        // else
+        // {
+        //     buttonObject.transform.position = new Vector3(50f, 50f, 50f);
+        //     buttonObject.SetActive(true);
+        //     buttonObject.buildingUp = buildingUp;
+        //     buttonObject.buildingToReplace = this;
+        //     buttonActive = true;
+        // }
     }
     // Start is called before the first frame update
     void Start()
