@@ -49,15 +49,19 @@ public class UI_Ressources_Overview_Controller : MonoBehaviour
         overviewBuilding4Label.text = "Empty | 0";
 
         overviewSlot1Button.clicked += () => {
+            Debug.Log("Slot 1 clicked");
             Debug.Log(gameManager.stones[0].isBuilt);
         };
         overviewSlot2Button.clicked += () => {
+            Debug.Log("Slot 2 clicked");
             Debug.Log(gameManager.stones[1].isBuilt);
         };
         overviewSlot3Button.clicked += () => {
+            Debug.Log("Slot 3 clicked");
             Debug.Log(gameManager.stones[2].isBuilt);
         };
         overviewSlot4Button.clicked += () => {
+            Debug.Log("Slot 4 clicked");
             Debug.Log(gameManager.stones[3].isBuilt);
         };
 
