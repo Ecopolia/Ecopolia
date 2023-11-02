@@ -10,9 +10,13 @@ public class UI_Ressources_Overview_Controller : MonoBehaviour
     public Label overviewGatherDataPerHour3;
 
     public Label overviewBuilding1Label;
+    public Button overviewSlot1Button;
     public Label overviewBuilding2Label;
+    public Button overviewSlot2Button;
     public Label overviewBuilding3Label;
+    public Button overviewSlot3Button;
     public Label overviewBuilding4Label;
+    public Button overviewSlot4Button;
 
     public bool isOpen;
 
@@ -24,9 +28,13 @@ public class UI_Ressources_Overview_Controller : MonoBehaviour
         overviewGatherDataPerHour3 = root.Q<Label>("overview-ressource-gather-data-per-hour-3");
 
         overviewBuilding1Label = root.Q<Label>("overview-batiment-1-label");
+        overviewSlot1Button = root.Q<Button>("overview-slot-1-button");
         overviewBuilding2Label = root.Q<Label>("overview-batiment-2-label");
+        overviewSlot2Button = root.Q<Button>("overview-slot-2-button");
         overviewBuilding3Label = root.Q<Label>("overview-batiment-3-label");
+        overviewSlot3Button = root.Q<Button>("overview-slot-3-button");
         overviewBuilding4Label = root.Q<Label>("overview-batiment-4-label");
+        overviewSlot4Button = root.Q<Button>("overview-slot-4-button");
 
         // Set the initial opacity to 0 (closed by default)
         root.Q<VisualElement>("overview-container").style.opacity = 0.0f;
@@ -39,6 +47,19 @@ public class UI_Ressources_Overview_Controller : MonoBehaviour
         overviewBuilding2Label.text = "Empty | 0";
         overviewBuilding3Label.text = "Empty | 0";
         overviewBuilding4Label.text = "Empty | 0";
+
+        overviewSlot1Button.clicked += () => {
+            Debug.Log(gameManager.stones[0].isBuilt);
+        };
+        overviewSlot2Button.clicked += () => {
+            Debug.Log(gameManager.stones[1].isBuilt);
+        };
+        overviewSlot3Button.clicked += () => {
+            Debug.Log(gameManager.stones[2].isBuilt);
+        };
+        overviewSlot4Button.clicked += () => {
+            Debug.Log(gameManager.stones[3].isBuilt);
+        };
 
     }
 

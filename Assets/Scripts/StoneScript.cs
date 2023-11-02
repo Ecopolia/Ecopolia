@@ -10,7 +10,7 @@ public class StoneScript : MonoBehaviour, IDataPersistence
     private void GenerateId(){
         id = System.Guid.NewGuid().ToString();
     }
-    private bool isBuilt = false;
+    public bool isBuilt = false;
     public bool isMenu = false;
     public Building[] buildingPrefab;
     public GameObject buildMenu;
