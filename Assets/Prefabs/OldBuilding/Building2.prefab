@@ -108,3 +108,4 @@ MonoBehaviour:
   timeToBuild: 10
   timeBuild: 0
   timeLeft: 0
+  buildingName: building 2
