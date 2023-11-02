@@ -17,10 +17,10 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public Building chantier;
 
     void Start(){
-        stones.AddRange(FindObjectsOfType<StoneScript>());
+        stones.AddRange(FindObjectsOfType<StoneScript>(true));
         foreach (var stone in stones)
         {
-            Debug.Log("t");
+            Debug.Log("stones");
             Debug.Log(stone);
         }
         
