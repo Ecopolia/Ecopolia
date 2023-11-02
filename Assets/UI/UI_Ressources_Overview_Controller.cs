@@ -1,6 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System.Linq;
 
 public class UI_Ressources_Overview_Controller : MonoBehaviour
 {
@@ -18,6 +20,8 @@ public class UI_Ressources_Overview_Controller : MonoBehaviour
     public Label overviewBuilding4Label;
     public Button overviewSlot4Button;
 
+    public List<Label> overviewBuildingLabels = new List<Label>();
+    public List<Button> overviewSlotButtons = new List<Button>();
     public bool isOpen;
 
     void Start()
@@ -36,6 +40,16 @@ public class UI_Ressources_Overview_Controller : MonoBehaviour
         overviewBuilding4Label = root.Q<Label>("overview-batiment-4-label");
         overviewSlot4Button = root.Q<Button>("overview-slot-4-button");
 
+        overviewBuildingLabels.Add(overviewBuilding1Label);
+        overviewBuildingLabels.Add(overviewBuilding2Label);
+        overviewBuildingLabels.Add(overviewBuilding3Label);
+        overviewBuildingLabels.Add(overviewBuilding4Label);
+
+        overviewSlotButtons.Add(overviewSlot1Button);
+        overviewSlotButtons.Add(overviewSlot2Button);
+        overviewSlotButtons.Add(overviewSlot3Button);
+        overviewSlotButtons.Add(overviewSlot4Button);
+
         // Set the initial opacity to 0 (closed by default)
         root.Q<VisualElement>("overview-container").style.opacity = 0.0f;
 
@@ -43,27 +57,12 @@ public class UI_Ressources_Overview_Controller : MonoBehaviour
         overviewGatherDataPerHour2.text = "0";
         overviewGatherDataPerHour3.text = "0";
 
-        overviewBuilding1Label.text = "Empty | 0";
-        overviewBuilding2Label.text = "Empty | 0";
-        overviewBuilding3Label.text = "Empty | 0";
-        overviewBuilding4Label.text = "Empty | 0";
+        overviewBuilding1Label.text = "Empty | 0 | 0";
+        overviewBuilding2Label.text = "Empty | 0 | 0";
+        overviewBuilding3Label.text = "Empty | 0 | 0";
+        overviewBuilding4Label.text = "Empty | 0 | 0";
 
-        overviewSlot1Button.clicked += () => {
-            Debug.Log("Slot 1 clicked");
-            Debug.Log(gameManager.stones[0].isBuilt);
-        };
-        overviewSlot2Button.clicked += () => {
-            Debug.Log("Slot 2 clicked");
-            Debug.Log(gameManager.stones[1].isBuilt);
-        };
-        overviewSlot3Button.clicked += () => {
-            Debug.Log("Slot 3 clicked");
-            Debug.Log(gameManager.stones[2].isBuilt);
-        };
-        overviewSlot4Button.clicked += () => {
-            Debug.Log("Slot 4 clicked");
-            Debug.Log(gameManager.stones[3].isBuilt);
-        };
+        
 
     }
 
@@ -71,24 +70,14 @@ public class UI_Ressources_Overview_Controller : MonoBehaviour
     {
         overviewGatherDataPerHour2.text = gameManager.GetMoneyRevenuePerHour().ToString() + " / h";
         overviewGatherDataPerHour1.text = gameManager.GetWoodRevenuePerHour().ToString() + " / h";
-
-        foreach(Building building in gameManager.buildings) {
-            if (overviewBuilding1Label.text == "Empty | 0")
+        
+        for ( int i = 0 ; i < gameManager.stones.Count ; i++) {
+           if (gameManager.stones[i].isBuilt) 
             {
-                overviewBuilding1Label.text = building.buildingName + " | Or: " + building.moneyCost + " | Bois: " + building.woodCost;
+                overviewBuildingLabels[i].text = gameManager.stones[i].build.buildingName+" | Or: "+gameManager.stones[i].build.moneyIncrease+" | Bois: "+gameManager.stones[i].build.woodIncrease;
+            } else {
+                overviewBuildingLabels[i].text = "Empty | 0 | 0";
             }
-            else if (overviewBuilding2Label.text == "Empty | 0")
-            {
-                overviewBuilding2Label.text = building.buildingName + " | Or: " + building.moneyCost + " | Bois: " + building.woodCost;
-            }
-            else if (overviewBuilding3Label.text == "Empty | 0")
-            {
-                overviewBuilding3Label.text = building.buildingName + " | Or: " + building.moneyCost + " | Bois: " + building.woodCost;
-            } 
-            else {
-                overviewBuilding4Label.text = building.buildingName + " | Or: " + building.moneyCost + " | Bois: " + building.woodCost;
-            }
-            
         }
 
     }
