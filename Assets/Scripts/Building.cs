@@ -26,6 +26,8 @@ public class Building : MonoBehaviour
     public float timeBuild = 0;
     public float timeLeft = 0;
 
+    public string buildingName;
+
     private void OnMouseDown()
     {
         // call coroutine menuAmelio ici

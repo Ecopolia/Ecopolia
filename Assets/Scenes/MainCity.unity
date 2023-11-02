@@ -1309,7 +1309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &850382253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2466,6 +2466,7 @@ MonoBehaviour:
   - {fileID: 1710117127348625435, guid: 01c6589662de90f47b1892c010e81638, type: 3}
   - {fileID: 5381248073507848946, guid: 3b57f191e51e90b4e8c8289a974d235b, type: 3}
   buildMenu: {fileID: 103949414}
+  build: {fileID: 0}
 --- !u!65 &1253245648
 BoxCollider:
   m_ObjectHideFlags: 0
