@@ -71,7 +71,7 @@ public class Building : MonoBehaviour
 
         if(buildingToPlace != null){
             if(Time.time >= timeBuild){
-                gm.ConstructBuilding(buildingToPlace, null, this);
+                gm.ConstructBuilding(buildingToPlace, this.stone, this);
             } else {
                 timeLeft = timeBuild - Time.time;
             }
