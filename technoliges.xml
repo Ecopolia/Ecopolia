@@ -17,7 +17,7 @@
     <Description>+10% de production de bois</Description>
     <CostGold>0</CostGold>
     <CostWood>10</CostWood>
-    <State>Locked</State>
+    <State>Unlocked</State>
     <ResearchTime>5</ResearchTime>
     <GoldBenefits>0</GoldBenefits>
     <WoodBenefits>10</WoodBenefits>

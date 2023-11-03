@@ -20,9 +20,13 @@ public class UI_Ressources_Overview_Controller : MonoBehaviour
     public Label overviewBuilding4Label;
     public Button overviewSlot4Button;
 
+    public Button overviewCloseSlotInfoButton;
+
     public List<Label> overviewBuildingLabels = new List<Label>();
     public List<Button> overviewSlotButtons = new List<Button>();
     public bool isOpen;
+
+    public bool isSlotInfoOpen;
 
     void Start()
     {
@@ -39,6 +43,7 @@ public class UI_Ressources_Overview_Controller : MonoBehaviour
         overviewSlot3Button = root.Q<Button>("overview-slot-3-button");
         overviewBuilding4Label = root.Q<Label>("overview-batiment-4-label");
         overviewSlot4Button = root.Q<Button>("overview-slot-4-button");
+        overviewCloseSlotInfoButton = root.Q<Button>("overview-close-slot-info-button");
 
         overviewBuildingLabels.Add(overviewBuilding1Label);
         overviewBuildingLabels.Add(overviewBuilding2Label);
@@ -52,15 +57,21 @@ public class UI_Ressources_Overview_Controller : MonoBehaviour
 
         // Set the initial opacity to 0 (closed by default)
         root.Q<VisualElement>("overview-container").style.opacity = 0.0f;
+        overviewCloseSlotInfoButton.style.opacity = 0.0f;
 
         overviewGatherDataPerHour1.text = "0";
         overviewGatherDataPerHour2.text = "0";
         overviewGatherDataPerHour3.text = "0";
 
-        overviewBuilding1Label.text = "Empty | 0 | 0";
-        overviewBuilding2Label.text = "Empty | 0 | 0";
-        overviewBuilding3Label.text = "Empty | 0 | 0";
-        overviewBuilding4Label.text = "Empty | 0 | 0";
+        overviewBuilding1Label.text = "";
+        overviewBuilding2Label.text = "";
+        overviewBuilding3Label.text = "";
+        overviewBuilding4Label.text = "";
+
+        isSlotInfoOpen = false;
+
+        overviewSlot1Button.clicked += () => { StartCoroutine(DisplaySlotInfo(gameManager.stones[0])); };
+        overviewCloseSlotInfoButton.clicked += () => { StartCoroutine(CloseSlotInfo()); };
 
         
 
@@ -71,12 +82,14 @@ public class UI_Ressources_Overview_Controller : MonoBehaviour
         overviewGatherDataPerHour2.text = gameManager.GetMoneyRevenuePerHour().ToString() + " / h";
         overviewGatherDataPerHour1.text = gameManager.GetWoodRevenuePerHour().ToString() + " / h";
         
-        for ( int i = 0 ; i < gameManager.stones.Count ; i++) {
-           if (gameManager.stones[i].isBuilt) 
-            {
-                overviewBuildingLabels[i].text = gameManager.stones[i].build.buildingName+" | Or: "+gameManager.stones[i].build.moneyIncrease+" | Bois: "+gameManager.stones[i].build.woodIncrease;
-            } else {
-                overviewBuildingLabels[i].text = "Empty | 0 | 0";
+        if(!isSlotInfoOpen) {
+            for ( int i = 0 ; i < gameManager.stones.Count ; i++) {
+                if (gameManager.stones[i].isBuilt) 
+                {
+                    overviewBuildingLabels[i].text = gameManager.stones[i].build.buildingName+" | Or: "+gameManager.stones[i].build.moneyIncrease+" | Bois: "+gameManager.stones[i].build.woodIncrease;
+                } else {
+                    overviewBuildingLabels[i].text = "Empty | 0 | 0";
+                }
             }
         }
 
@@ -101,6 +114,36 @@ public class UI_Ressources_Overview_Controller : MonoBehaviour
             // Close instantly
             root.Q<VisualElement>("overview-container").style.opacity = 0.0f;
             root.Q<VisualElement>("overview-container").style.display = DisplayStyle.None;
+        }
+
+        yield return null;
+    }
+
+    public IEnumerator DisplaySlotInfo(StoneScript stone) {
+        isSlotInfoOpen = true;
+        overviewCloseSlotInfoButton.style.opacity = 1.0f;
+        Debug.Log("DisplaySlotInfo clicked");
+        // clear text on all labels
+        for ( int i = 0 ; i < overviewBuildingLabels.Count ; i++) {
+            overviewBuildingLabels[i].text = "";
+        }
+
+        //display info on selected slot you can use all labels as new line for the text
+        overviewBuilding1Label.text = stone.build.buildingName;
+        overviewBuilding2Label.text = "Or: "+stone.build.moneyIncrease;
+        overviewBuilding3Label.text = "Bois: "+stone.build.woodIncrease;
+        overviewBuilding4Label.text = "Temps: "+stone.build.timeToBuild;
+
+        yield return null;
+    }
+
+    public IEnumerator CloseSlotInfo() {
+        isSlotInfoOpen = false;
+        overviewCloseSlotInfoButton.style.opacity = 0.0f;
+        Debug.Log("CloseSlotInfo clicked");
+        // clear text on all labels
+        for ( int i = 0 ; i < overviewBuildingLabels.Count ; i++) {
+            overviewBuildingLabels[i].text = "";
         }
 
         yield return null;

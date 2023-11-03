@@ -135,7 +135,7 @@ public class LoadTechs : MonoBehaviour
                 // Déduisez le coût des ressources en utilisant GameManager
                 gameManager.DeductResources(requiredGold, requiredWood);
 
-                specificTech.State = "Unlocked";
+                specificTech.State = "Upgrading";
                 StartCoroutine(CompletePurchaseWithDelay(specificTech.ResearchTime));
 
             }
@@ -143,6 +143,9 @@ public class LoadTechs : MonoBehaviour
             {
                 Debug.Log("Insufficient resources to buy this technology.");
             }
+        } else if (specificTech != null && specificTech.State == "Upgrading")
+        {
+            SkipWithGems(specificTech.ResearchTime);
         }
         else
         {
@@ -157,7 +160,7 @@ public class LoadTechs : MonoBehaviour
 
         while (secondsRemaining > 0)
         {
-            technologyButton.GetComponentInChildren<TextMeshProUGUI>().text = "Recherche en cours... (" + secondsRemaining + "s)";
+            technologyButton.GetComponentInChildren<TextMeshProUGUI>().text = "Recherche en cours... (" + secondsRemaining + "s)\n Cliquez pour passer avec "+delais/5+" gemmes";
             yield return new WaitForSeconds(1f);
             secondsRemaining--;
         }
@@ -165,8 +168,25 @@ public class LoadTechs : MonoBehaviour
         techEngine = gameObject.GetComponent<TechEngine>();
         
         techEngine.increaseMoney(specificTech.GoldBenefits);
-        techEngine.increaseWood(specificTech.WoodBenefits); // rajoutez l'id du batiment si on veut focus un batiment en particulier
+        techEngine.increaseWood(specificTech.WoodBenefits);
+        Debug.Log("Coroutine benefit used");
         UpdateTechStateInXML(specificTech.ID, "Unlocked");
+        specificTech.State = "Unlocked";
+    }
+
+    private void SkipWithGems(int delais) {
+        // 1 gems for 5 sec skip 
+        if(gameManager.gemme >= delais/5){
+            StopCoroutine("CompletePurchaseWithDelay");
+            gameManager.gemme -= delais/5;
+            FillButtonVariables(specificTech);
+            techEngine = gameObject.GetComponent<TechEngine>();
+            techEngine.increaseMoney(specificTech.GoldBenefits);
+            techEngine.increaseWood(specificTech.WoodBenefits); // rajoutez l'id du batiment si on veut focus un batiment en particulier
+            Debug.Log("Skip benefit used");
+            UpdateTechStateInXML(specificTech.ID, "Unlocked");
+            specificTech.State = "Unlocked";
+        }
     }
   
     private void SaveDataToXML(TechnologyTree techTree)
