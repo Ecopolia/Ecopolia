@@ -48,6 +48,8 @@ public class LoadTechs : MonoBehaviour
     private TechEngine techEngine;
 
     private Technology specificTech;
+
+    private int secondsRemaining;
     private void Start()
     {
         
@@ -56,6 +58,7 @@ public class LoadTechs : MonoBehaviour
         if (specificTech != null)
         {
             FillButtonVariables(specificTech);
+            secondsRemaining = specificTech.ResearchTime;
         }
         
     }
@@ -136,7 +139,7 @@ public class LoadTechs : MonoBehaviour
                 gameManager.DeductResources(requiredGold, requiredWood);
 
                 specificTech.State = "Upgrading";
-                StartCoroutine(CompletePurchaseWithDelay(specificTech.ResearchTime));
+                StartCoroutine(CompletePurchaseWithDelay());
 
             }
             else
@@ -145,7 +148,7 @@ public class LoadTechs : MonoBehaviour
             }
         } else if (specificTech != null && specificTech.State == "Upgrading")
         {
-            SkipWithGems(specificTech.ResearchTime);
+            SkipWithGems();
         }
         else
         {
@@ -153,14 +156,13 @@ public class LoadTechs : MonoBehaviour
         }
     }
 
-   private IEnumerator<WaitForSeconds> CompletePurchaseWithDelay(int delais)
+   private IEnumerator<WaitForSeconds> CompletePurchaseWithDelay()
     {
-        int secondsRemaining = delais;
         var technologyButton = gameObject.GetComponent<Button>();
 
         while (secondsRemaining > 0)
         {
-            technologyButton.GetComponentInChildren<TextMeshProUGUI>().text = "Recherche en cours... (" + secondsRemaining + "s)\n Cliquez pour passer avec "+delais/5+" gemmes";
+            technologyButton.GetComponentInChildren<TextMeshProUGUI>().text = "Recherche en cours... (" + secondsRemaining + "s)\n Cliquez pour passer avec "+secondsRemaining/5+" gemmes";
             yield return new WaitForSeconds(1f);
             secondsRemaining--;
         }
@@ -174,18 +176,11 @@ public class LoadTechs : MonoBehaviour
         specificTech.State = "Unlocked";
     }
 
-    private void SkipWithGems(int delais) {
+    private void SkipWithGems() {
         // 1 gems for 5 sec skip 
-        if(gameManager.gemme >= delais/5){
-            StopCoroutine("CompletePurchaseWithDelay");
-            gameManager.gemme -= delais/5;
-            FillButtonVariables(specificTech);
-            techEngine = gameObject.GetComponent<TechEngine>();
-            techEngine.increaseMoney(specificTech.GoldBenefits);
-            techEngine.increaseWood(specificTech.WoodBenefits); // rajoutez l'id du batiment si on veut focus un batiment en particulier
-            Debug.Log("Skip benefit used");
-            UpdateTechStateInXML(specificTech.ID, "Unlocked");
-            specificTech.State = "Unlocked";
+        if(gameManager.gemme >= secondsRemaining/5){
+            gameManager.gemme -= secondsRemaining/5;
+            secondsRemaining = 0;
         }
     }
   

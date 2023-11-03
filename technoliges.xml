@@ -28,7 +28,7 @@
     <Description>+10% de production d'or</Description>
     <CostGold>10</CostGold>
     <CostWood>0</CostWood>
-    <State>Locked</State>
+    <State>Unlocked</State>
     <ResearchTime>5</ResearchTime>
     <GoldBenefits>10</GoldBenefits>
     <WoodBenefits>0</WoodBenefits>
