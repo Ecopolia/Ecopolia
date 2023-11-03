@@ -7,9 +7,8 @@ using System.Linq;
 public class GameManager : MonoBehaviour, IDataPersistence
 {
     public int money;
-    public Text moneyDisplay;
     public int wood;
-    public Text woodDisplay;
+    public int gemme;
     public List<Building> buildings = new List<Building>();
     public List<Building> buildingsPrefabs = new List<Building>();
     public List<StoneScript> stones = new List<StoneScript>();
@@ -23,8 +22,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     // Update is called once per frame
     void Update()
     {
-        moneyDisplay.text = money.ToString();
-        woodDisplay.text = wood.ToString();    
+        
     }
 
     public void BuyBuilding(Building building)
