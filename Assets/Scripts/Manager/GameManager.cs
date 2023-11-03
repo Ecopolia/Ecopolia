@@ -124,4 +124,20 @@ public class GameManager : MonoBehaviour, IDataPersistence
         data.money = this.money;
         data.wood = this.wood;
     }
+
+     // Méthode pour vérifier si le joueur a suffisamment de ressources
+    public bool HasEnoughResources(int requiredGold, int requiredWood)
+    {
+        return money >= requiredGold && wood >= requiredWood;
+    }
+
+    // Méthode pour déduire les ressources
+    public void DeductResources(int requiredGold, int requiredWood)
+    {
+        if (HasEnoughResources(requiredGold, requiredWood))
+        {
+            money -= requiredGold;
+            wood -= requiredWood;
+        }
+    }
 }
