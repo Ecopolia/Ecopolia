@@ -19,14 +19,12 @@ public class Building : MonoBehaviour
     private float nextIncreaseTime;
     private GameManager gm;
     public StoneScript stone;
-
     public Building buildingToPlace = null;
-
     public float timeToBuild;
     public float timeBuild = 0;
     public float timeLeft = 0;
-
     public string buildingName;
+    public string description;
     private bool buttonActive = false;
     public ButtonUp buttonObject;
     private ButtonUp buttonUpActive;
@@ -74,7 +72,7 @@ public class Building : MonoBehaviour
 
         if(buildingToPlace != null){
             if(Time.time >= timeBuild){
-                gm.ConstructBuilding(buildingToPlace, null, this);
+                gm.ConstructBuilding(buildingToPlace, this.stone, this);
             } else {
                 timeLeft = timeBuild - Time.time;
             }

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<TechnologyTree xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Technology>
+    <ID>1</ID>
+    <Name>Technologie de Base</Name>
+    <Description>+5% de production de bois et d'or</Description>
+    <CostGold>0</CostGold>
+    <CostWood>0</CostWood>
+    <State>Unlocked</State>
+    <ResearchTime>0</ResearchTime>
+    <GoldBenefits>5</GoldBenefits>
+    <WoodBenefits>5</WoodBenefits>
+  </Technology>
+  <Technology>
+    <ID>2</ID>
+    <Name>Technologie 1</Name>
+    <Description>+10% de production de bois</Description>
+    <CostGold>0</CostGold>
+    <CostWood>10</CostWood>
+    <State>Locked</State>
+    <ResearchTime>5</ResearchTime>
+    <GoldBenefits>0</GoldBenefits>
+    <WoodBenefits>10</WoodBenefits>
+  </Technology>
+  <Technology>
+    <ID>3</ID>
+    <Name>Technologie 2</Name>
+    <Description>+10% de production d'or</Description>
+    <CostGold>10</CostGold>
+    <CostWood>0</CostWood>
+    <State>Locked</State>
+    <ResearchTime>5</ResearchTime>
+    <GoldBenefits>10</GoldBenefits>
+    <WoodBenefits>0</WoodBenefits>
+  </Technology>
+</TechnologyTree>

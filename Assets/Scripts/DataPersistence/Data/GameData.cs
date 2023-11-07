@@ -12,8 +12,8 @@ public class GameData
 
     // Structure de la save
     public GameData() {
-        this.money = 15;
-        this.wood = 20;
+        this.money = 100;
+        this.wood = 100;
         this.stone = new SerializableDictionary<string, string>();
         this.stoneBuild = new SerializableDictionary<string, float>();
     }

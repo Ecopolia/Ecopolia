@@ -7,9 +7,8 @@ using System.Linq;
 public class GameManager : MonoBehaviour, IDataPersistence
 {
     public int money;
-    public Text moneyDisplay;
     public int wood;
-    public Text woodDisplay;
+    public int gemme;
     public List<Building> buildings = new List<Building>();
     public List<Building> buildingsPrefabs = new List<Building>();
     public List<StoneScript> stones = new List<StoneScript>();
@@ -23,8 +22,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     // Update is called once per frame
     void Update()
     {
-        moneyDisplay.text = money.ToString();
-        woodDisplay.text = wood.ToString();    
+
     }
 
     // Permet d'acheter un batiment avec comme paramètre le batiment 
@@ -64,6 +62,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
     {
         if(stone && !buildingToUp){
             chantier.buildingToPlace = buildingToPlace;
+            chantier.stone = stone;
+
             if(timeLeft == 0){
                 chantier.timeBuild = 0;
             } else if(timeLeft != -1) {
@@ -71,7 +71,6 @@ public class GameManager : MonoBehaviour, IDataPersistence
             } else {
                 chantier.timeBuild = Time.time + buildingToPlace.timeToBuild;
             }
-
             
             Instantiate(chantier, stone.transform.position, Quaternion.identity);
             stone.gameObject.SetActive(false);
@@ -79,14 +78,24 @@ public class GameManager : MonoBehaviour, IDataPersistence
         }
 
         if(buildingToUp){
+            buildings.Remove(stone.build);
             buildings.Add(buildingToPlace);
-            buildings.Remove(buildingToUp);
+            
             Instantiate(buildingToPlace, buildingToUp.transform.position, Quaternion.identity);
             buildingToUp.gameObject.SetActive(false);
-            buildingToUp.stone.build = buildingToPlace;
+            stone.build = buildingToPlace;
+
+            foreach (var building in buildings)
+            {
+                Debug.Log(building);
+                if(buildingToUp == building){
+                    Debug.Log("oui");
+                }
+            }
         }
 
         buildingToPlace.stone = stone;
+        
         
     }
 
@@ -132,5 +141,21 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public void SaveData(ref GameData data){
         data.money = this.money;
         data.wood = this.wood;
+    }
+
+     // Méthode pour vérifier si le joueur a suffisamment de ressources
+    public bool HasEnoughResources(int requiredGold, int requiredWood)
+    {
+        return money >= requiredGold && wood >= requiredWood;
+    }
+
+    // Méthode pour déduire les ressources
+    public void DeductResources(int requiredGold, int requiredWood)
+    {
+        if (HasEnoughResources(requiredGold, requiredWood))
+        {
+            money -= requiredGold;
+            wood -= requiredWood;
+        }
     }
 }

@@ -39,6 +39,36 @@ public class TechEngine : MonoBehaviour
                 }
             }
         }
+
         
     }
+
+        public void increaseWood(int percent, string id = null){
+        Debug.Log("ici");
+        Debug.Log(gm.buildingsPrefabs.Count);
+        if(id != null){
+            foreach (Building building in gm.buildingsPrefabs)
+            {
+            
+                if(id == building.id){
+                    Debug.Log(building.woodIncrease);
+                    building.woodIncrease = Mathf.RoundToInt(building.woodIncrease * (1 + percent / 100.0f));
+                    Debug.Log(building.woodIncrease);
+
+                }  
+            }
+        }
+        else {
+            foreach (Building building in gm.buildingsPrefabs)
+            {
+                if(building.woodIncrease != 0){
+                    building.woodIncrease = Mathf.RoundToInt(building.woodIncrease * (1 + percent / 100.0f));
+                   
+                }
+            }
+        }
+
+
+    }
+    
 }
