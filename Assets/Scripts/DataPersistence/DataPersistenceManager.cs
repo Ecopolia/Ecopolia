@@ -19,16 +19,19 @@ public class DataPersistenceManager : MonoBehaviour
         instance = this;
     }
 
+    // Start is called before the first frame update
     private void Start(){
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadGame();
     }
 
+    // Permet de créer une nouvelle save
     public void NewGame() {
         this.gameData = new GameData();
     }
 
+    // Load la save ou si rien n'est trouvé crée une nouvelle save
     public void LoadGame() {
         this.gameData = dataHandler.Load();
 
@@ -43,6 +46,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     }
 
+    // Save les datas dans la save
     public void SaveGame() {
         foreach( IDataPersistence dataPersistenceObject in dataPersistenceObjects){
             dataPersistenceObject.SaveData( ref gameData);
@@ -51,10 +55,12 @@ public class DataPersistenceManager : MonoBehaviour
         dataHandler.Save(gameData);
     }
 
+    // Save quand l'application est quitté
     private void OnApplicationQuit() {
         SaveGame();
     }
 
+    // Récupère toutes les datas
     private List<IDataPersistence> FindAllDataPersistenceObjects() {
         IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
 

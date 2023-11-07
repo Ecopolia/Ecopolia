@@ -10,6 +10,7 @@ public class GameData
     public SerializableDictionary<string, string> stone;
     public SerializableDictionary<string, float> stoneBuild;
 
+    // Structure de la save
     public GameData() {
         this.money = 15;
         this.wood = 20;

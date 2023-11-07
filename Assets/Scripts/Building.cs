@@ -32,10 +32,11 @@ public class Building : MonoBehaviour
     private ButtonUp buttonUpActive;
     public Building buildingUp;
 
+    // Quand un clique sur l'objet est réaliser déclenche la fonction
+    // Fait apparaitre le bouton d'amélioration si le batiment à une amélioration possible
     private void OnMouseDown()
     {
         if(buildingUp){
-            Debug.Log("buildingUp");
             if (buttonActive)
             {
                 Destroy(buttonUpActive.gameObject);
@@ -80,11 +81,13 @@ public class Building : MonoBehaviour
         }
     }
 
+    // Calcule et renvoie la money par heure
     public float CalculateMoneyRevenuePerHour()
     {
         return moneyIncrease * (3600 / timeBtwIncrease);
     }
 
+    // Calcule et renvoie le bois par heure
     public float CalculateWoodRevenuePerHour()
     {
         return woodIncrease * (3600 / timeBtwIncrease);

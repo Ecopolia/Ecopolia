@@ -16,9 +16,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     public Building chantier;
 
+    // Start is called before the first frame update
     void Start(){
         stones.AddRange(FindObjectsOfType<StoneScript>(true));
-        
     }
     // Update is called once per frame
     void Update()
@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         woodDisplay.text = wood.ToString();    
     }
 
+    // Permet d'acheter un batiment avec comme paramètre le batiment 
     public void BuyBuilding(Building building)
     {
         if ((building.moneyCost == 0 || money >= building.moneyCost) && (building.woodCost == 0 || wood >= building.woodCost)) {
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     }
 
+    // Permet d'ameliorer un batiment avec comme paramètre le nouveau batiment et le batiment à améliorer
     public bool UpBuilding(Building buildingUp, Building buildingToReplace){
         if ((buildingUp.moneyCost == 0 || money >= buildingUp.moneyCost) && (buildingUp.woodCost == 0 || wood >= buildingUp.woodCost)) {
             if (buildingUp.moneyCost > 0) money -= buildingUp.moneyCost;
@@ -56,6 +58,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
         }
     }
 
+    // Permet de construire le batiment avec comme paramètre le batiment à placer, la stone pour l'emplacement, 
+    // si il y a déjà un batiment alors on rajoute le batiment en question, et si le batiment était en construction lors de la save on rajoute le temps restant
     public void ConstructBuilding(Building buildingToPlace, StoneScript stone, Building buildingToUp = null, float timeLeft = -1)
     {
         if(stone && !buildingToUp){
@@ -86,6 +90,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         
     }
 
+    // Permet de dire si le menu est open ou fermé au Stone avec comme paramètre un booléen true/false pour open/close
     public void SetMenu(bool menu){
         StoneScript[] stoneScripts = FindObjectsOfType<StoneScript>();
 
@@ -95,6 +100,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         }
     }
 
+    // Renvoie la money par heure
     public float GetMoneyRevenuePerHour()
     {
         float sum = 0;
@@ -105,6 +111,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         return sum;
     }
 
+    // Renvoie le wood par heure
     public float GetWoodRevenuePerHour()
     {
         float sum = 0;
@@ -115,11 +122,13 @@ public class GameManager : MonoBehaviour, IDataPersistence
         return sum;
     }
 
+    // Load la data de la save
     public void LoadData(GameData data){
         this.money = data.money;
         this.wood = data.wood;
     }
 
+    // Save la data dans la save
     public void SaveData(ref GameData data){
         data.money = this.money;
         data.wood = this.wood;

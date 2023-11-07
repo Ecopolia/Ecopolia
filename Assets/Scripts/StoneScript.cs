@@ -18,9 +18,12 @@ public class StoneScript : MonoBehaviour, IDataPersistence
     public Building build = null;
     private GameManager gm;
 
+    // Start is called before the first frame update
     void Start() {
         gm = FindObjectOfType<GameManager>();
     }
+
+    // Quand un clique sur l'objet est réaliser déclenche la fonction
     private void OnMouseDown()
     {
         if(isBuilt || isMenu){
@@ -32,6 +35,7 @@ public class StoneScript : MonoBehaviour, IDataPersistence
         selectedStone = this;
     }
 
+    // Permet de set le batiment à la stone avec comme paramètre le batiment
     public void SetBuild(Building building) {
         if(building){
             isBuilt = true;
@@ -42,6 +46,7 @@ public class StoneScript : MonoBehaviour, IDataPersistence
         gm.SetMenu(false);
     }
 
+    // Load les datas de la save
     public void LoadData(GameData data){
         string idBuilding;
         float timeLeft;
@@ -66,6 +71,7 @@ public class StoneScript : MonoBehaviour, IDataPersistence
         }
     }
 
+    // Save les datas sur la save
     public void SaveData(ref GameData data){
         if(data.stone.ContainsKey(id)){
             data.stone.Remove(id);

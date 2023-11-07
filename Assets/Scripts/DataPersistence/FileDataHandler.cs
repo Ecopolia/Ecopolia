@@ -16,6 +16,7 @@ public class FileDataHandler
         this.useEncryption = useEncryption;
     }
 
+    // Récupère les datas contenue dans le fichier de la save
     public GameData Load() {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
         GameData loadedData = null;
@@ -47,6 +48,7 @@ public class FileDataHandler
         return loadedData;
     }
 
+    // Save les datas dans la fichier de la save
     public void Save(GameData data){
         string fullPath = Path.Combine(dataDirPath, dataFileName);
         try {
@@ -73,6 +75,7 @@ public class FileDataHandler
         }
     }
 
+    // Permet de crypté/decrypté les datas dans le fichier de la save
     private string EncryptDecrypt(string data){
         string modifiedData = "";
         for(int i = 0; i < data.Length; i++)
