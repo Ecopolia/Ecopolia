@@ -158,4 +158,17 @@ public class GameManager : MonoBehaviour, IDataPersistence
             wood -= requiredWood;
         }
     }
+
+    // Methode qui renvoie le nombre de buildingX construit
+    public int getAllConstructByBuilding(Building building) {
+        var nbBuilding = 0;
+        foreach (var item in buildings)
+        {
+            if(building.id == item.id) {
+                nbBuilding ++;
+            }
+        }
+
+        return nbBuilding;
+    }
 }
