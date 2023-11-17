@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ItemPriceTag : MonoBehaviour
+public class UI_Canvas_BuildMenu : MonoBehaviour
 {
     public GameManager gameManager;
 
@@ -16,11 +16,19 @@ public class ItemPriceTag : MonoBehaviour
 
     public GameObject[] priceTags;
 
+    public GameObject[] ItemCount;
+
     // Start is called before the first frame update
 
     public Button CloseButton;
 
     public Button Slot1Button;
+
+    public Button Slot2Button;
+
+    public Button Slot3Button;
+
+    public Button Slot4Button;
     void Start()
     {
         // this set active to false
@@ -39,6 +47,10 @@ public class ItemPriceTag : MonoBehaviour
                 priceTags[i].GetComponentInChildren<TMP_Text>().text = building[i].moneyCost.ToString();
             }
 
+            for (int i = 0; i < ItemCount.Length; i++) {
+                ItemCount[i].GetComponentInChildren<TMP_Text>().text = gameManager.getAllConstructByBuilding(building[i]).ToString();
+            }
+
 
             CloseButton.onClick.AddListener(() => {
                 gameObject.SetActive(false);
@@ -46,6 +58,18 @@ public class ItemPriceTag : MonoBehaviour
 
             Slot1Button.onClick.AddListener(() => {
                 gameManager.BuyBuilding(building[0]);
+            });
+
+            Slot2Button.onClick.AddListener(() => {
+                gameManager.BuyBuilding(building[1]);
+            });
+
+            Slot3Button.onClick.AddListener(() => {
+                gameManager.BuyBuilding(building[2]);
+            });
+
+            Slot4Button.onClick.AddListener(() => {
+                gameManager.BuyBuilding(building[3]);
             });
 
             gameObject.SetActive(false);
@@ -60,5 +84,12 @@ public class ItemPriceTag : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(gameManager != null) {
+            for (int i = 0; i < ItemCount.Length; i++) {
+                ItemCount[i].GetComponentInChildren<TMP_Text>().text = gameManager.getAllConstructByBuilding(building[i]).ToString();
+            }
+        } else {
+            // ignore
+        }
     }
 }
