@@ -49,7 +49,6 @@ public class UI_Canvas_Top : MonoBehaviour
             });
 
             AvatarOverviewButton.onClick.AddListener(() => {
-                Debug.Log("click");
                 RessourcesCanvasOverview.SetActive(true);
             });
         } else {
