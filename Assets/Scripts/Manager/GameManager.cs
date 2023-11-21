@@ -28,9 +28,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
     // Permet d'acheter un batiment avec comme paramètre le batiment 
     public void BuyBuilding(Building building)
     {
-        if ((building.moneyCost == 0 || money >= building.moneyCost) && (building.woodCost == 0 || wood >= building.woodCost)) {
-            if (building.moneyCost > 0) money -= building.moneyCost;
-            if (building.woodCost > 0) wood -= building.woodCost;
+        if (HasEnoughResources(building.moneyCost, building.woodCost)) {
+            DeductResources(buildingUp.moneyCost, buildingUp.woodCost)
             
             ConstructBuilding(building, StoneScript.selectedStone, null);
         } else {
@@ -43,9 +42,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     // Permet d'ameliorer un batiment avec comme paramètre le nouveau batiment et le batiment à améliorer
     public bool UpBuilding(Building buildingUp, Building buildingToReplace){
-        if ((buildingUp.moneyCost == 0 || money >= buildingUp.moneyCost) && (buildingUp.woodCost == 0 || wood >= buildingUp.woodCost)) {
-            if (buildingUp.moneyCost > 0) money -= buildingUp.moneyCost;
-            if (buildingUp.woodCost > 0) wood -= buildingUp.woodCost;
+        if (HasEnoughResources(buildingUp.moneyCost, buildingUp.woodCost)) {
+            DeductResources(buildingUp.moneyCost, buildingUp.woodCost)
             
             ConstructBuilding(buildingUp, buildingToReplace.stone, buildingToReplace);
             return true;
@@ -131,19 +129,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         return sum;
     }
 
-    // Load la data de la save
-    public void LoadData(GameData data){
-        this.money = data.money;
-        this.wood = data.wood;
-    }
-
-    // Save la data dans la save
-    public void SaveData(ref GameData data){
-        data.money = this.money;
-        data.wood = this.wood;
-    }
-
-     // Méthode pour vérifier si le joueur a suffisamment de ressources
+    // Méthode pour vérifier si le joueur a suffisamment de ressources
     public bool HasEnoughResources(int requiredGold, int requiredWood)
     {
         return money >= requiredGold && wood >= requiredWood;
@@ -170,5 +156,19 @@ public class GameManager : MonoBehaviour, IDataPersistence
         }
 
         return nbBuilding;
+    }
+
+    // Load la data de la save
+    public void LoadData(GameData data){
+        this.money = data.money;
+        this.wood = data.wood;
+        this.gemme = data.gemme;
+    }
+
+    // Save la data dans la save
+    public void SaveData(ref GameData data){
+        data.money = this.money;
+        data.wood = this.wood;
+        data.gemme = this.gemme;
     }
 }
