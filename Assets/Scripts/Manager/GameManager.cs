@@ -157,6 +157,29 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         return nbBuilding;
     }
+    
+    // Fonction pour augmenter la ressource spécifiée et returns void
+    // Paramètres :
+    //   - resourceType : Le type de ressource à augmenter (money, wood, gemme).
+    //   - increaseValue : La valeur à ajouter à la ressource.
+    public void IncreaseResource(string resourceType, int increaseValue)
+    {
+        switch (resourceType.ToLower())
+        {
+            case "money":
+                money += increaseValue;
+                break;
+            case "wood":
+                wood += increaseValue;
+                break;
+            case "gemme":
+                gemme += increaseValue;
+                break;
+            default:
+                Debug.LogError("Resource type not recognized: " + resourceType);
+                break;
+        }
+    }
 
     // Load la data de la save
     public void LoadData(GameData data){
