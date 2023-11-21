@@ -27,6 +27,9 @@ public class UI_Canvas_Top : MonoBehaviour
 
     public GameObject RessourcesCanvasOverview;
 
+    public GameObject TechTreeCanvas;
+    public Button TechTreeButton;
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +54,11 @@ public class UI_Canvas_Top : MonoBehaviour
             AvatarOverviewButton.onClick.AddListener(() => {
                 RessourcesCanvasOverview.SetActive(true);
             });
+
+            TechTreeButton.onClick.AddListener(() => {
+                TechTreeCanvas.SetActive(true);
+            });
+            
         } else {
             // ignore
         }
