@@ -68,6 +68,8 @@ public class UI_Canvas_TechTree : MonoBehaviour
         CloseButton.onClick.AddListener(() => {
             gameObject.SetActive(false);
         });
+
+        gameObject.SetActive(false);
         
     }
 
