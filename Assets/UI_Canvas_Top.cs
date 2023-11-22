@@ -30,6 +30,8 @@ public class UI_Canvas_Top : MonoBehaviour
     public GameObject TechTreeCanvas;
     public Button TechTreeButton;
 
+    public GameObject GemsShopCanvas;
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,15 +42,15 @@ public class UI_Canvas_Top : MonoBehaviour
             GemsText.text = gameManager.gemme.ToString();
 
             MoreGoldButton.onClick.AddListener(() => {
-                gameManager.money += 100;
+                GemsShopCanvas.SetActive(true);
             });
 
             MoreWoodButton.onClick.AddListener(() => {
-                gameManager.wood += 100;
+                GemsShopCanvas.SetActive(true);
             });
 
             MoreGemsButton.onClick.AddListener(() => {
-                gameManager.gemme += 100;
+                GemsShopCanvas.SetActive(true);
             });
 
             AvatarOverviewButton.onClick.AddListener(() => {

@@ -8,12 +8,16 @@ public class UI_GemsShop : MonoBehaviour
     public GameManager gameManager;
 
     public GameObject[] appItems;
+
+    public Button closeButton;
     private List<List<GameObject>> appItemsBatches;
     // Start is called before the first frame update
     void Start()
     {
         appItemsBatches = new List<List<GameObject>>();
-        gameObject.SetActive(false);
+        string[] resourceTypes = { "money", "wood", "gemme" };
+        int[] values = { 100, 1000, 10000 };
+
         for (int i = 0; i < appItems.Length; i += 3)
         {
             List<GameObject> batch = new List<GameObject>();
@@ -24,33 +28,40 @@ public class UI_GemsShop : MonoBehaviour
             appItemsBatches.Add(batch);
         }
 
-        foreach (List<GameObject> batch in appItemsBatches)
+        for (int i = 0; i < appItemsBatches.Count; i++)
         {
-            if (batch.Count > 0)
-            {
-                Transform child0 = batch[0].transform.Find("bg");
-                if (child0 != null && child0.GetComponent<Button>() != null)
-                {
-                    child0.GetComponent<Button>().onClick.AddListener(() => OnButton0Click(batch));
-                }
-            }
+            List<GameObject> batch = appItemsBatches[i];
 
-            if (batch.Count > 1)
+            for (int j = 0; j < batch.Count; j++)
             {
-                batch[1].GetComponent<Button>().onClick.AddListener(() => gameManager.IncreaseResource('money', 100));
-            }
+                GameObject item = batch[j];
+                Button button = item.GetComponent<Button>();
 
-            if (batch.Count > 2)
-            {
-                Transform child2 = batch[2].transform.Find("bg");
-                if (child2 != null && child2.GetComponent<Button>() != null)
-                {
-                    child2.GetComponent<Button>().onClick.AddListener(() => OnButton2Click(batch));
-                }
+                int currentIndex = i;
+                int currentJndex = j;
+
+                // Add the listener
+                button.onClick.AddListener(() => {
+                    if (currentIndex >= 0 && currentIndex < resourceTypes.Length &&
+                        currentJndex >= 0 && currentJndex < values.Length)
+                    {
+                        gameManager.IncreaseResource(resourceTypes[currentIndex], values[currentJndex]);
+                    }
+                    else
+                    {
+                        Debug.Log("Not implemented");
+                    }
+                });
             }
         }
 
+        closeButton.onClick.AddListener(() => {
+            gameObject.SetActive(false);
+        });
+
+        gameObject.SetActive(false);
     }
+
 
     // Update is called once per frame
     void Update()
