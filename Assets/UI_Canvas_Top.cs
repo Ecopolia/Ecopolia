@@ -32,6 +32,10 @@ public class UI_Canvas_Top : MonoBehaviour
 
     public GameObject GemsShopCanvas;
 
+    public GameObject WeatherCanvas;
+
+    public Button WeatherButton;
+
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +63,10 @@ public class UI_Canvas_Top : MonoBehaviour
 
             TechTreeButton.onClick.AddListener(() => {
                 TechTreeCanvas.SetActive(true);
+            });
+
+            WeatherButton.onClick.AddListener(() => {
+                WeatherCanvas.SetActive(true);
             });
             
         } else {
