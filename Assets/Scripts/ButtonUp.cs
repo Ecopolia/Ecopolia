@@ -8,7 +8,7 @@ public class ButtonUp : MonoBehaviour
     public Building buildingUp;
     public Building buildingToReplace;
     
-    // Quand un clique sur l'objet est réaliser déclenche la fonction
+    // Quand un clique sur l'objet déclenche la fonction
     private void OnMouseDown(){
         if(gm.UpBuilding(buildingUp, buildingToReplace)){
             Destroy(this.gameObject);
