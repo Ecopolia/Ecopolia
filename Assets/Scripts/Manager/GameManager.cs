@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public void BuyBuilding(Building building)
     {
         if (HasEnoughResources(building.moneyCost, building.woodCost)) {
-            DeductResources(buildingUp.moneyCost, buildingUp.woodCost)
+            DeductResources(building.moneyCost, building.woodCost);
             
             ConstructBuilding(building, StoneScript.selectedStone, null);
         } else {
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     // Permet d'ameliorer un batiment avec comme paramètre le nouveau batiment et le batiment à améliorer
     public bool UpBuilding(Building buildingUp, Building buildingToReplace){
         if (HasEnoughResources(buildingUp.moneyCost, buildingUp.woodCost)) {
-            DeductResources(buildingUp.moneyCost, buildingUp.woodCost)
+            DeductResources(buildingUp.moneyCost, buildingUp.woodCost);
             
             ConstructBuilding(buildingUp, buildingToReplace.stone, buildingToReplace);
             return true;
