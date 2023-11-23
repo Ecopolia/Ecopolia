@@ -16,7 +16,6 @@ public class ui_canva_overview : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.SetActive(false);
         
         if (gameManager != null)
         {
@@ -31,6 +30,8 @@ public class ui_canva_overview : MonoBehaviour
         CloseButton.onClick.AddListener(() => {
             gameObject.SetActive(false);
         });
+
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
