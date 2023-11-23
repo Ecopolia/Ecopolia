@@ -6,7 +6,7 @@ using System.Linq;
 
 public class UI_Ressources_Overview_Controller : MonoBehaviour
 {
-    public GameManager gameManager; // Reference to the GameManager
+    public GameManager gm; // Reference to the GameManager
     public Label overviewGatherDataPerHour1;
     public Label overviewGatherDataPerHour2;
     public Label overviewGatherDataPerHour3;
@@ -70,7 +70,7 @@ public class UI_Ressources_Overview_Controller : MonoBehaviour
 
         isSlotInfoOpen = false;
 
-        overviewSlot1Button.clicked += () => { StartCoroutine(DisplaySlotInfo(gameManager.stones[0])); };
+        overviewSlot1Button.clicked += () => { StartCoroutine(DisplaySlotInfo(gm.stones[0])); };
         overviewCloseSlotInfoButton.clicked += () => { StartCoroutine(CloseSlotInfo()); };
 
         
@@ -79,14 +79,14 @@ public class UI_Ressources_Overview_Controller : MonoBehaviour
 
     void Update()
     {
-        overviewGatherDataPerHour2.text = gameManager.GetMoneyRevenuePerHour().ToString() + " / h";
-        overviewGatherDataPerHour1.text = gameManager.GetWoodRevenuePerHour().ToString() + " / h";
+        overviewGatherDataPerHour2.text = gm.GetMoneyRevenuePerHour().ToString() + " / h";
+        overviewGatherDataPerHour1.text = gm.GetWoodRevenuePerHour().ToString() + " / h";
         
         if(!isSlotInfoOpen) {
-            for ( int i = 0 ; i < gameManager.stones.Count ; i++) {
-                if (gameManager.stones[i].isBuilt) 
+            for ( int i = 0 ; i < gm.stones.Count ; i++) {
+                if (gm.stones[i].isBuilt) 
                 {
-                    overviewBuildingLabels[i].text = gameManager.stones[i].build.buildingName+" | Or: "+gameManager.stones[i].build.moneyIncrease+" | Bois: "+gameManager.stones[i].build.woodIncrease;
+                    overviewBuildingLabels[i].text = gm.stones[i].build.buildingName+" | Or: "+gm.stones[i].build.moneyIncrease+" | Bois: "+gm.stones[i].build.woodIncrease;
                 } else {
                     overviewBuildingLabels[i].text = "Empty | 0 | 0";
                 }

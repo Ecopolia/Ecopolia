@@ -30,19 +30,20 @@ public class StoneScript : MonoBehaviour, IDataPersistence
             return;
         }
         gm.SetMenu(true);
-        // call coroutine active ici
-        buildMenu.SetActive(!buildMenu.gameObject.activeSelf);
+        buildMenu.SetActive(true);
         selectedStone = this;
+        Debug.Log("ici");
     }
 
     // Permet de set le batiment à la stone avec comme paramètre le batiment
-    public void SetBuild(Building building) {
+    public void SetBuild(Building building, float timeLeft = 0) {
         if(building){
             isBuilt = true;
             build = building;
         }
-        // call coroutine desactive ici
-        buildMenu.SetActive(false);
+        if(timeLeft == -1) {
+            buildMenu.SetActive(false);
+        }
         gm.SetMenu(false);
     }
 

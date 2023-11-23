@@ -12,7 +12,7 @@ public class UI_Top_Controller : MonoBehaviour
     public Label moneyText;
     public Button UiRessourcesOverviewButton;
     public UI_Ressources_Overview_Controller UIRessourcesOverviewController;
-    public GameManager gameManager;
+    public GameManager gm;
 
     public string score = "E";
     // Start is called before the first frame update
@@ -40,8 +40,8 @@ public class UI_Top_Controller : MonoBehaviour
         } else {
             leafScore.text = score;
         }
-        woodText.text = gameManager.wood.ToString();
-        moneyText.text = gameManager.money.ToString();
+        woodText.text = gm.wood.ToString();
+        moneyText.text = gm.money.ToString();
     }
     Color Colorleaf(string score){
         switch (score)

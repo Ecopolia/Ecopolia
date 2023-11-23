@@ -8,7 +8,7 @@ public class HudElement : MonoBehaviour
 {
     public TMP_Text MoneyText;
     public TMP_Text WoodText;
-    public GameManager gameManager;
+    public GameManager gm;
 
     public GameObject overviewCanvas;
 
@@ -17,10 +17,10 @@ public class HudElement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (gameManager != null)
+        if (gm != null)
         {
-            MoneyText.text = gameManager.money.ToString();
-            WoodText.text = gameManager.wood.ToString();
+            MoneyText.text = gm.money.ToString();
+            WoodText.text = gm.wood.ToString();
         }
         else
         {
@@ -35,10 +35,10 @@ public class HudElement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager != null)
+        if (gm != null)
         {
-            MoneyText.text = gameManager.money.ToString();
-            WoodText.text = gameManager.wood.ToString();
+            MoneyText.text = gm.money.ToString();
+            WoodText.text = gm.wood.ToString();
         }
         else
         {

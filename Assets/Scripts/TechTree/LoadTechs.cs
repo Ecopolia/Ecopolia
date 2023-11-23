@@ -43,7 +43,7 @@ public class LoadTechs : MonoBehaviour
     private TechnologyTree techTree;
     private Button technologyButton;
 
-    public GameManager gameManager;
+    public GameManager gm;
 
     private TechEngine techEngine;
 
@@ -61,16 +61,6 @@ public class LoadTechs : MonoBehaviour
             secondsRemaining = specificTech.ResearchTime;
         }
         
-    }
-
-    private TechnologyTree LoadDataFromXML()
-    {
-        XmlSerializer serializer = new XmlSerializer(typeof(TechnologyTree));
-        using (FileStream stream = new FileStream(xmlFileName, FileMode.Open))
-        {
-            techTree = (TechnologyTree)serializer.Deserialize(stream);
-        }
-        return techTree;
     }
 
     private Technology GetTechnologyByID(int id)
@@ -133,10 +123,10 @@ public class LoadTechs : MonoBehaviour
             int requiredGold = specificTech.CostGold;
             int requiredWood = specificTech.CostWood;
 
-            if (gameManager.HasEnoughResources(requiredGold, requiredWood) && specificTech.State =="Locked")
+            if (gm.HasEnoughResources(requiredGold, requiredWood) && specificTech.State =="Locked")
             {
                 // Déduisez le coût des ressources en utilisant GameManager
-                gameManager.DeductResources(requiredGold, requiredWood);
+                gm.DeductResources(requiredGold, requiredWood);
 
                 specificTech.State = "Upgrading";
                 StartCoroutine(CompletePurchaseWithDelay());
@@ -178,31 +168,40 @@ public class LoadTechs : MonoBehaviour
 
     private void SkipWithGems() {
         // 1 gems for 5 sec skip 
-        if(gameManager.gemme >= secondsRemaining/5){
-            gameManager.gemme -= secondsRemaining/5;
+        if(gm.gemme >= secondsRemaining/5){
+            gm.gemme -= secondsRemaining/5;
             secondsRemaining = 0;
         }
     }
-  
+    
+    private TechnologyTree LoadDataFromXML()
+    {
+        XmlSerializer serializer = new XmlSerializer(typeof(TechnologyTree));
+        using (FileStream stream = new FileStream(xmlFileName, FileMode.Open))
+        {
+            techTree = (TechnologyTree)serializer.Deserialize(stream);
+        }
+        return techTree;
+    }
     private void SaveDataToXML(TechnologyTree techTree)
-{
-    XmlSerializer serializer = new XmlSerializer(typeof(TechnologyTree));
-    using (FileStream stream = new FileStream(xmlFileName, FileMode.Create))
     {
-        serializer.Serialize(stream, techTree);
+        XmlSerializer serializer = new XmlSerializer(typeof(TechnologyTree));
+        using (FileStream stream = new FileStream(xmlFileName, FileMode.Create))
+        {
+            serializer.Serialize(stream, techTree);
+        }
     }
-}
-public void UpdateTechStateInXML(int techId, string newState)
-{
-    TechnologyTree techTree = LoadDataFromXML();
-
-    Technology specificTech = techTree.technologies.Find(tech => tech.ID == techId);
-
-    if (specificTech != null)
+    public void UpdateTechStateInXML(int techId, string newState)
     {
-        specificTech.State = newState;
+        TechnologyTree techTree = LoadDataFromXML();
 
-        SaveDataToXML(techTree);
+        Technology specificTech = techTree.technologies.Find(tech => tech.ID == techId);
+
+        if (specificTech != null)
+        {
+            specificTech.State = newState;
+
+            SaveDataToXML(techTree);
+        }
     }
-}
 }

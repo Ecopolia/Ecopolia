@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public List<Building> buildings = new List<Building>();
     public List<Building> buildingsPrefabs = new List<Building>();
     public List<StoneScript> stones = new List<StoneScript>();
-
+    public bool menuActive = false;
     public Building chantier;
 
     // Start is called before the first frame update
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         } else {
             // mettre message alert nomoney
             Debug.Log("no money or wood");
-            StoneScript.selectedStone.SetBuild(null);
+            StoneScript.selectedStone.SetBuild(null, 0);
         }
 
     }
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
             
             Instantiate(chantier, stone.transform.position, Quaternion.identity);
             stone.gameObject.SetActive(false);
-            stone.SetBuild(buildingToPlace);
+            stone.SetBuild(buildingToPlace, timeLeft);
         }
 
         if(buildingToUp){
@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     // Permet de dire si le menu est open ou fermé au Stone avec comme paramètre un booléen true/false pour open/close
     public void SetMenu(bool menu){
+        menuActive = menu;
         StoneScript[] stoneScripts = FindObjectsOfType<StoneScript>();
 
         foreach (StoneScript stoneScript in stoneScripts)

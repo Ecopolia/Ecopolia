@@ -8,7 +8,7 @@ using TMPro;
 public class UI_Canvas_Top : MonoBehaviour
 {
 
-    public GameManager gameManager;
+    public GameManager gm;
 
     public Button MoreGoldButton;
 
@@ -40,10 +40,10 @@ public class UI_Canvas_Top : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (gameManager != null){
-            GoldText.text = gameManager.money.ToString();
-            WoodText.text = gameManager.wood.ToString();
-            GemsText.text = gameManager.gemme.ToString();
+        if (gm != null){
+            GoldText.text = gm.money.ToString();
+            WoodText.text = gm.wood.ToString();
+            GemsText.text = gm.gemme.ToString();
 
             MoreGoldButton.onClick.AddListener(() => {
                 GemsShopCanvas.SetActive(true);
@@ -78,10 +78,10 @@ public class UI_Canvas_Top : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     if (gameManager != null) {
-        GoldText.text = gameManager.money.ToString();
-        WoodText.text = gameManager.wood.ToString();
-        GemsText.text = gameManager.gemme.ToString();
+     if (gm != null) {
+        GoldText.text = gm.money.ToString();
+        WoodText.text = gm.wood.ToString();
+        GemsText.text = gm.gemme.ToString();
      } else {
         // ignore
      }

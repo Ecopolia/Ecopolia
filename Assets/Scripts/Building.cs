@@ -34,7 +34,7 @@ public class Building : MonoBehaviour
     // Fait apparaitre le bouton d'amélioration si le batiment à une amélioration possible
     private void OnMouseDown()
     {
-        if(buildingUp){
+        if(buildingUp && !gm.menuActive){
             if (buttonActive)
             {
                 Destroy(buttonUpActive.gameObject);

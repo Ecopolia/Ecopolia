@@ -7,7 +7,7 @@ using TMPro;
 
 public class ui_canva_overview : MonoBehaviour
 {
-     public GameManager gameManager;
+     public GameManager gm;
 
      public TMP_Text Slot1Text;
      public TMP_Text Slot2Text;
@@ -17,10 +17,10 @@ public class ui_canva_overview : MonoBehaviour
     void Start()
     {
         
-        if (gameManager != null)
+        if (gm != null)
         {
-            Slot1Text.text = gameManager.GetMoneyRevenuePerHour().ToString() + " / h";
-            Slot2Text.text = gameManager.GetWoodRevenuePerHour().ToString() + " / h";
+            Slot1Text.text = gm.GetMoneyRevenuePerHour().ToString() + " / h";
+            Slot2Text.text = gm.GetWoodRevenuePerHour().ToString() + " / h";
         }
         else
         {
@@ -38,10 +38,10 @@ public class ui_canva_overview : MonoBehaviour
     void Update()
     {
 
-        if (gameManager != null)
+        if (gm != null)
         {
-            Slot1Text.text = gameManager.GetMoneyRevenuePerHour().ToString() + " / h";
-            Slot2Text.text = gameManager.GetWoodRevenuePerHour().ToString() + " / h";
+            Slot1Text.text = gm.GetMoneyRevenuePerHour().ToString() + " / h";
+            Slot2Text.text = gm.GetWoodRevenuePerHour().ToString() + " / h";
         }
         else
         {
