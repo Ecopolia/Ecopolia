@@ -40,6 +40,13 @@ public class LoadTechs : MonoBehaviour
     public string xmlFileName; // Le nom de votre fichier XML
 
     public int techId;
+    public GameObject pricePopUp;
+    public GameObject descriptionPopUp;
+    public GameObject researchTimePopup;
+    public GameObject namePopUp;
+    public GameObject effectPopUp;
+
+
     private TechnologyTree techTree;
     private Button technologyButton;
 
@@ -50,7 +57,7 @@ public class LoadTechs : MonoBehaviour
     private Technology specificTech;
 
     private int secondsRemaining;
-    private void Start()
+    public void Start()
     {
         
         LoadDataFromXML(); 
@@ -76,43 +83,48 @@ public class LoadTechs : MonoBehaviour
     }
 
 
-    private void FillButtonVariables(Technology specificTech)
+        private void FillButtonVariables(Technology specificTech)
     {
-        // Accédez au composant Button directement
-        var technologyButton = gameObject.GetComponent<Button>();
-
-
-        if (technologyButton != null && specificTech != null)
+        if (specificTech != null)
         {
-            // Remplissez les variables du bouton avec les données de specificTech
-            var buttonText = technologyButton.GetComponentInChildren<TextMeshProUGUI>();
-            var buttonImage = technologyButton.GetComponent<Image>();
 
-            if (buttonText != null)
+                SetPopupText(pricePopUp, specificTech.CostGold +" "+specificTech.CostWood);
+                SetPopupText(descriptionPopUp, "Description: " + specificTech.Description);
+                SetPopupText(researchTimePopup, "Research Time: " + specificTech.ResearchTime + " seconds");
+                SetPopupText(namePopUp, specificTech.Name);
+                SetPopupText(effectPopUp, "Gold benefict: " + specificTech.GoldBenefits+ "Wood benefict :" + specificTech.WoodBenefits);
+
+                pricePopUp.SetActive(true);
+                descriptionPopUp.SetActive(true);
+                researchTimePopup.SetActive(true);
+                namePopUp.SetActive(true);
+                effectPopUp.SetActive(true);
+        }
+            
+        else
+        {
+            Debug.LogError("La référence à la technologie est manquante.");
+        }
+    }
+
+    // Fonction utilitaire pour définir le texte d'un popup TextMeshProUGUI
+    private void SetPopupText(GameObject popup, string text)
+    {
+        if (popup != null)
+        {
+            TextMeshProUGUI popupText = popup.GetComponentInChildren<TextMeshProUGUI>();
+            if (popupText != null)
             {
-                string buttonLabel = specificTech.Name + "\n" +
-                                    "Description: " + specificTech.Description + "\n" +
-                                    "Gold Cost: " + specificTech.CostGold + "\n" +
-                                    "Wood Cost: " + specificTech.CostWood;
-
-                if (specificTech.State == "Locked")
-                    {
-                        buttonLabel += "\nResearch Time: " + specificTech.ResearchTime + " seconds";}
-                 
-                buttonText.text = buttonLabel;
+                popupText.text = text;
             }
-
-            if (buttonImage != null)
+            else
             {
-                if (specificTech.State == "Locked")
-                {
-                    buttonImage.color = Color.red;
-                }
-                else
-                {
-                    buttonImage.color = Color.green;
-                }
+                Debug.LogError("Aucun composant TextMeshProUGUI trouvé dans le popup.");
             }
+        }
+        else
+        {
+            Debug.LogError("La référence au popup est manquante.");
         }
     }
 
@@ -158,7 +170,8 @@ public class LoadTechs : MonoBehaviour
         }
         FillButtonVariables(specificTech);
         techEngine = gameObject.GetComponent<TechEngine>();
-        
+        technologyButton.GetComponentInChildren<TextMeshProUGUI>().text = "";
+
         techEngine.increaseMoney(specificTech.GoldBenefits);
         techEngine.increaseWood(specificTech.WoodBenefits);
         Debug.Log("Coroutine benefit used");

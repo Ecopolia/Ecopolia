@@ -6,7 +6,7 @@
     <Description>+5% de production de bois et d'or</Description>
     <CostGold>0</CostGold>
     <CostWood>0</CostWood>
-    <State>Unlocked</State>
+    <State>Locked</State>
     <ResearchTime>0</ResearchTime>
     <GoldBenefits>5</GoldBenefits>
     <WoodBenefits>5</WoodBenefits>
@@ -17,7 +17,7 @@
     <Description>+10% de production de bois</Description>
     <CostGold>0</CostGold>
     <CostWood>10</CostWood>
-    <State>Unlocked</State>
+    <State>Locked</State>
     <ResearchTime>5</ResearchTime>
     <GoldBenefits>0</GoldBenefits>
     <WoodBenefits>10</WoodBenefits>
