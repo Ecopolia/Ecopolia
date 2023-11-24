@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public List<StoneScript> stones = new List<StoneScript>();
     public bool menuActive = false;
     public Building chantier;
+    public List<Technology> technologies = new List<Technology>();
+
 
     // Start is called before the first frame update
     void Start(){

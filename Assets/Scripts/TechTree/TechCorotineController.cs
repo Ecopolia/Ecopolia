@@ -15,9 +15,9 @@ public class TechCorotineController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {        
-        if(Time.time >= nextIncreaseTime){
-            nextIncreaseTime = Time.time + secondsRemaining;
-
+        if(Time.time >= Time.time + secondsRemaining){
+            //ici connrd
+            
         }
         
     }
