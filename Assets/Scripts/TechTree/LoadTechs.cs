@@ -61,13 +61,12 @@ public class LoadTechs : MonoBehaviour
 
     private int secondsRemaining;
 
+
     public void Start()
     {
 
-        Debug.Log(LoadDataFromXML()); 
-        Debug.Log(techTree.technologies);
-
-     
+        LoadDataFromXML();
+        techEngine = gameObject.GetComponent<TechEngine>();
     }
 
 

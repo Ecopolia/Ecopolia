@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UI_Canvas_TechTree : MonoBehaviour
 {
@@ -18,52 +19,50 @@ public class UI_Canvas_TechTree : MonoBehaviour
 
     private Sprite[] icons;
 
-    private List<GameObject> desactivatedSlots;
-    private List<List<GameObject>> slotBatches;
+    public GameObject[] techSlots;
 
+    public GameObject infoPopUpCanvas;
 
+    private TechEngine techEngine;
     // Start is called before the first frame update
     void Start()
     {
-        desactivatedSlots = new List<GameObject>();
-        // Loop through Slots and create a List of tuples of 3 slots
-        slotBatches = new List<List<GameObject>>();
-        for (int i = 0; i < Slots.Length; i += 3)
+        techEngine = gm.GetComponent<TechEngine>();
+        for (int i = 0; i < techSlots.Length; i++)
         {
-            List<GameObject> batch = new List<GameObject>();
-            for (int j = i; j < Mathf.Min(i + 3, Slots.Length); j++)
-            {
-                batch.Add(Slots[j]);
-            }
-            slotBatches.Add(batch);
+            int index = i;
+            TMP_Text priceText = techSlots[index].transform.Find("pricePlank")?.GetComponentInChildren<TMP_Text>();
+            TMP_Text namePanel = techSlots[index].transform.Find("namePanel")?.GetComponentInChildren<TMP_Text>();
+            Button slotButton = techSlots[index].transform.Find("bg")?.GetComponent<Button>();
+            Button popUpInfoButton = techSlots[index].transform.Find("InfoBubble")?.GetComponent<Button>();
+            TMP_Text popUpTitle = infoPopUpCanvas.transform.Find("title")?.GetComponentInChildren<TMP_Text>();
+            TMP_Text statsText = infoPopUpCanvas.transform.Find("stats")?.GetComponentInChildren<TMP_Text>();
+            TMP_Text DescriptionText = infoPopUpCanvas.transform.Find("description")?.GetComponentInChildren<TMP_Text>();
+            TMP_Text infoPriceText = infoPopUpCanvas.transform.Find("priceTag")?.GetComponentInChildren<TMP_Text>();
+
+
+            namePanel.text =  gm.technologies[index].Name;
+            priceText.text = gm.technologies[index].CostGold + " " + gm.technologies[index].CostWood;
+
+
+            slotButton.onClick.AddListener(() => {
+                techEngine.BuyTech(index);
+            });
+            
+            popUpInfoButton.onClick.AddListener(() => {
+                
+                popUpTitle.text = gm.technologies[index].Name;
+                DescriptionText.text = gm.technologies[index].Description;
+                infoPriceText.text = gm.technologies[index].CostGold + " " + gm.technologies[index].CostWood;
+                statsText.text = gm.technologies[index].CostGold + " " + gm.technologies[index].CostWood;
+
+                infoPopUpCanvas.SetActive(true);
+            });
+
+            
         }
 
 
-        // Loop through slot batches and set up the UI
-        foreach (List<GameObject> batch in slotBatches)
-        {
-            // Deactivate the third slot in each batch
-            desactivateSlot(batch[2]);
-
-            // Set up button listeners for the first and second slots in each batch
-            if (batch.Count > 0)
-            {
-                Transform child0 = batch[0].transform.Find("bg");
-                if (child0 != null && child0.GetComponent<Button>() != null)
-                {
-                    child0.GetComponent<Button>().onClick.AddListener(() => OnButton0Click(batch));
-                }
-            }
-
-            if (batch.Count > 1)
-            {
-                Transform child1 = batch[1].transform.Find("bg");
-                if (child1 != null && child1.GetComponent<Button>() != null)
-                {
-                    child1.GetComponent<Button>().onClick.AddListener(() => OnButton1Click(batch));
-                }
-            }
-        }
 
         CloseButton.onClick.AddListener(() => {
             gameObject.SetActive(false);
@@ -148,7 +147,6 @@ public class UI_Canvas_TechTree : MonoBehaviour
     void desactivateSlot(GameObject slot)
     {
         // push the slot in the desactivatedSlots array
-        desactivatedSlots.Add(slot);
         foreach (Transform child in slot.transform)
         {
             if (child.GetComponent<Image>() != null)
@@ -178,45 +176,9 @@ public class UI_Canvas_TechTree : MonoBehaviour
         }
     }
 
-    void OnButton0Click(List<GameObject> batch)
-    {
-        // Deactivate child1
-        desactivateSlot(batch[1]);
-        
-        // Activate the third element of the current batch
-        activateSlot(batch[2]);
-        activatePipe(pipeLeft);
-        // Deactivate the opposite pipe and turn bg image red of the opposite child (1, 0)
-        desactivatePipe(pipeRight);
-        TurnBgRed(batch[1]);
 
-        // remove button 1 listener
-        Transform child1 = batch[1].transform.Find("bg");
-        if (child1 != null && child1.GetComponent<Button>() != null)
-        {
-            child1.GetComponent<Button>().onClick.RemoveAllListeners();
-        }
-    }
 
-    void OnButton1Click(List<GameObject> batch)
-    {
-        // Deactivate child0
-        desactivateSlot(batch[0]);
-
-        // Activate the third element of the current batch
-        activateSlot(batch[2]);
-        activatePipe(pipeRight);
-        // Deactivate the opposite pipe and turn bg image red of the opposite child (0, 1)
-        desactivatePipe(pipeLeft);
-        TurnBgRed(batch[0]);
-
-        // remove button 0 listener
-        Transform child0 = batch[0].transform.Find("bg");
-        if (child0 != null && child0.GetComponent<Button>() != null)
-        {
-            child0.GetComponent<Button>().onClick.RemoveAllListeners();
-        }
-    }
+    
 
     void TurnBgRed(GameObject slot)
     {

@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public Building chantier;
     public List<Technology> technologies = new List<Technology>();
 
-
     // Start is called before the first frame update
     void Start(){
         stones.AddRange(FindObjectsOfType<StoneScript>(true));
@@ -184,6 +183,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         }
     }
     
+    
 
     // Load la data de la save
     public void LoadData(GameData data){
@@ -198,7 +198,5 @@ public class GameManager : MonoBehaviour, IDataPersistence
         data.wood = this.wood;
         data.gemme = this.gemme;
     }
-
-
 
 }
