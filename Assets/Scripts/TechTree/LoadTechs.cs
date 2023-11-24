@@ -49,8 +49,11 @@ public class LoadTechs : MonoBehaviour
 
     private TechnologyTree techTree;
     private Button technologyButton;
+    private Button skipButton;
 
     public GameManager gm;
+
+    public GameObject LoadingBar;
 
     private TechEngine techEngine;
 
@@ -59,15 +62,19 @@ public class LoadTechs : MonoBehaviour
     private int secondsRemaining;
     public void Start()
     {
-        
+        skipButton = LoadingBar.GetComponentInChildren<Button>();
+        skipButton.onClick.AddListener(() => {
+                SkipWithGems();
+            });
         LoadDataFromXML(); 
         specificTech = GetTechnologyByID(techId);
         if (specificTech != null)
         {
             FillButtonVariables(specificTech);
-            secondsRemaining = specificTech.ResearchTime;
+            //secondsRemaining = specificTech.ResearchTime;
         }
-        
+        GameObject go1 = new GameObject();
+        go1.name = "TechCorotine" + techId;
     }
 
     private Technology GetTechnologyByID(int id)
@@ -90,7 +97,7 @@ public class LoadTechs : MonoBehaviour
 
                 SetPopupText(pricePopUp, specificTech.CostGold +" "+specificTech.CostWood);
                 SetPopupText(descriptionPopUp, "Description: " + specificTech.Description);
-                SetPopupText(researchTimePopup, "Research Time: " + specificTech.ResearchTime + " seconds");
+                SetPopupText(researchTimePopup, specificTech.ResearchTime + " s");
                 SetPopupText(namePopUp, specificTech.Name);
                 SetPopupText(effectPopUp, "Gold benefict: " + specificTech.GoldBenefits+ "Wood benefict :" + specificTech.WoodBenefits);
 
@@ -150,7 +157,7 @@ public class LoadTechs : MonoBehaviour
             }
         } else if (specificTech != null && specificTech.State == "Upgrading")
         {
-            SkipWithGems();
+            // TODO : this should   not happen because  of the following 
         }
         else
         {
@@ -160,14 +167,17 @@ public class LoadTechs : MonoBehaviour
 
    private IEnumerator<WaitForSeconds> CompletePurchaseWithDelay()
     {
+        secondsRemaining = specificTech.ResearchTime;
         var technologyButton = gameObject.GetComponent<Button>();
-
+        LoadingBar.SetActive(true);
         while (secondsRemaining > 0)
         {
-            technologyButton.GetComponentInChildren<TextMeshProUGUI>().text = "Recherche en cours... (" + secondsRemaining + "s)\n Cliquez pour passer avec "+secondsRemaining/5+" gemmes";
-            yield return new WaitForSeconds(1f);
+        SetPopupText(researchTimePopup, secondsRemaining + " s");            
+        yield return new WaitForSeconds(1f);
             secondsRemaining--;
         }
+        LoadingBar.SetActive(false);
+
         FillButtonVariables(specificTech);
         techEngine = gameObject.GetComponent<TechEngine>();
         technologyButton.GetComponentInChildren<TextMeshProUGUI>().text = "";

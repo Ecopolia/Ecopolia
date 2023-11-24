@@ -181,6 +181,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
                 break;
         }
     }
+    
 
     // Load la data de la save
     public void LoadData(GameData data){
@@ -195,4 +196,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         data.wood = this.wood;
         data.gemme = this.gemme;
     }
+
+
+
 }
