@@ -177,6 +177,7 @@ MonoBehaviour:
   - {fileID: 1710117127348625435, guid: 471dee1bd8ddd7249b8cd6c037641281, type: 3}
   - {fileID: 1710117127348625435, guid: 8b1f0fa825a1b0f47b293ac53836adb0, type: 3}
   stones: []
+  menuActive: 0
   chantier: {fileID: 0}
 --- !u!1 &251731390
 GameObject:
@@ -306,7 +307,7 @@ Transform:
   m_GameObject: {fileID: 251731390}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -26.41, y: -0.83, z: 13.5979395}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
