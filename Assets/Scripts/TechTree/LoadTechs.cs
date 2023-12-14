@@ -38,33 +38,12 @@ public class Technology
 public class LoadTechs : MonoBehaviour 
 {
     public string xmlFileName; // Le nom de votre fichier XML
-
-    public int techId;
-    public GameObject pricePopUp;
-    public GameObject descriptionPopUp;
-    public GameObject researchTimePopup;
-    public GameObject namePopUp;
-    public GameObject effectPopUp;
-
-
     private TechnologyTree techTree;
-    private Button technologyButton;
-    private Button skipButton;
-
     public GameManager gm;
-
-    public GameObject LoadingBar;
-
     private TechEngine techEngine;
-
-    private Technology specificTech;
-
-    private int secondsRemaining;
-
-
+    
     public void Start()
     {
-
         LoadDataFromXML();
         techEngine = gameObject.GetComponent<TechEngine>();
     }

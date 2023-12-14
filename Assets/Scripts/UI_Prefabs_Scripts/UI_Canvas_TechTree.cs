@@ -40,7 +40,7 @@ public class UI_Canvas_TechTree : MonoBehaviour
             TMP_Text DescriptionText = infoPopUpCanvas.transform.Find("description")?.GetComponentInChildren<TMP_Text>();
             TMP_Text infoPriceText = infoPopUpCanvas.transform.Find("priceTag")?.GetComponentInChildren<TMP_Text>();
 
-
+            Debug.Log(index);
             namePanel.text =  gm.technologies[index].Name;
             priceText.text = gm.technologies[index].CostGold + " " + gm.technologies[index].CostWood;
 
@@ -62,13 +62,9 @@ public class UI_Canvas_TechTree : MonoBehaviour
             
         }
 
-
-
         CloseButton.onClick.AddListener(() => {
             gameObject.SetActive(false);
         });
-
-        gameObject.SetActive(false);
         
     }
 
