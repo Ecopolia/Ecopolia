@@ -75,16 +75,16 @@ public class UI_Canvas_TechTree : MonoBehaviour
     }
 
     bool IsSlotInArray(GameObject slot, GameObject[] array)
-{
-    foreach (GameObject item in array)
     {
-        if (item == slot)
+        foreach (GameObject item in array)
         {
-            return true;
+            if (item == slot)
+            {
+                return true;
+            }
         }
+        return false;
     }
-    return false;
-}
 
     void activatePipe(GameObject pipe)
     {
