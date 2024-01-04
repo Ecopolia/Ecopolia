@@ -85,7 +85,7 @@ public class LoadTechs : MonoBehaviour
         }
 
         // Generate new technologies
-        List<Technology> newTechs = GenerateTechnologyTree(3);
+        List<Technology> newTechs = GenerateTechnologyTree(25);
 
         // Add new technologies to the existing ones
         techTree.technologies.AddRange(newTechs);
@@ -120,7 +120,8 @@ public class LoadTechs : MonoBehaviour
                 CostGold = UnityEngine.Random.Range(0, 20),
                 CostWood = UnityEngine.Random.Range(0, 20),
                 State = "Locked",
-                ResearchTime = UnityEngine.Random.Range(1, 10) * 100,
+                // ResearchTime = UnityEngine.Random.Range(1, 10) * 100,
+                ResearchTime = UnityEngine.Random.Range(1, 5),
                 GoldBenefits = gold,
                 WoodBenefits = wood,
             };

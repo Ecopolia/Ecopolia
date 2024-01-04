@@ -70,7 +70,9 @@ public class TechEngine : MonoBehaviour
 
 
 
-        unlockTech(specificTech);
+        increaseMoney(specificTech.GoldBenefits);
+        increaseWood(specificTech.WoodBenefits);
+        specificTech.State = "Unlocked";
         Debug.Log("Coroutine benefit used");
     }
 
@@ -106,12 +108,6 @@ public class TechEngine : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void unlockTech(Technology specificTech){
-        increaseMoney(specificTech.GoldBenefits);
-        increaseWood(specificTech.WoodBenefits);
-        specificTech.State = "Unlocked";
     }
 
         public void increaseWood(int percent, string id = null){

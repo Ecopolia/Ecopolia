@@ -35,10 +35,6 @@ public class UI_Canvas_TechTree : MonoBehaviour
             TMP_Text namePanel = techSlots[index].transform.Find("namePanel")?.GetComponentInChildren<TMP_Text>();
             Button slotButton = techSlots[index].transform.Find("bg")?.GetComponent<Button>();
             Button popUpInfoButton = techSlots[index].transform.Find("InfoBubble")?.GetComponent<Button>();
-            TMP_Text popUpTitle = infoPopUpCanvas.transform.Find("title")?.GetComponentInChildren<TMP_Text>();
-            TMP_Text statsText = infoPopUpCanvas.transform.Find("stats")?.GetComponentInChildren<TMP_Text>();
-            TMP_Text DescriptionText = infoPopUpCanvas.transform.Find("description")?.GetComponentInChildren<TMP_Text>();
-            TMP_Text infoPriceText = infoPopUpCanvas.transform.Find("priceTag")?.GetComponentInChildren<TMP_Text>();
             GameObject loadingBar = techSlots[index].transform.Find("LoadingBar")?.gameObject;
 
             Debug.Log(index);
@@ -51,13 +47,7 @@ public class UI_Canvas_TechTree : MonoBehaviour
             });
             
             popUpInfoButton.onClick.AddListener(() => {
-                
-                popUpTitle.text = gm.technologies[index].Name;
-                DescriptionText.text = gm.technologies[index].Description;
-                infoPriceText.text = gm.technologies[index].CostGold + " " + gm.technologies[index].CostWood;
-                statsText.text = gm.technologies[index].CostGold + " " + gm.technologies[index].CostWood;
-
-                infoPopUpCanvas.SetActive(true);
+                displayInfoPopUp(index);
             });
 
             
@@ -72,7 +62,26 @@ public class UI_Canvas_TechTree : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+
+    public void displayInfoPopUp(int index) {
+        TMP_Text popUpTitle = infoPopUpCanvas.transform.Find("title")?.GetComponentInChildren<TMP_Text>();
+        TMP_Text statsText = infoPopUpCanvas.transform.Find("stats")?.GetComponentInChildren<TMP_Text>();
+        TMP_Text DescriptionText = infoPopUpCanvas.transform.Find("description")?.GetComponentInChildren<TMP_Text>();
+        TMP_Text infoPriceText = infoPopUpCanvas.transform.Find("priceTag")?.GetComponentInChildren<TMP_Text>();
         
+        popUpTitle.text = gm.technologies[index].Name;
+        DescriptionText.text = gm.technologies[index].Description;
+        infoPriceText.text = gm.technologies[index].CostGold + " " + gm.technologies[index].CostWood;
+        statsText.text = gm.technologies[index].CostGold + " " + gm.technologies[index].CostWood;
+        GameObject icon = infoPopUpCanvas.transform.Find("TechIcon")?.gameObject;
+        // if tech is unlocked set TechIcon color to white
+        Debug.Log(gm.technologies[index].State);
+        if (gm.technologies[index].State == "Unlocked")
+        {
+            infoPriceText.color = Color.white;
+        }
+        infoPopUpCanvas.SetActive(true);
     }
 
     bool IsSlotInArray(GameObject slot, GameObject[] array)
