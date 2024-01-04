@@ -7,6 +7,8 @@
     "com.unity.2d.spriteshape": "7.0.6",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.2d.tilemap.extras": "https://github.com/Unity-Technologies/2d-extras.git#master",
+    "com.unity.adaptiveperformance.google.android": "1.2.1",
+    "com.unity.adaptiveperformance.samsung.android": "5.0.0",
     "com.unity.burst": "1.7.2",
     "com.unity.collab-proxy": "2.0.1",
     "com.unity.collections": "1.2.4",

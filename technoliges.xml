@@ -7,7 +7,7 @@
     <CostGold>0</CostGold>
     <CostWood>0</CostWood>
     <State>Locked</State>
-    <ResearchTime>0</ResearchTime>
+    <ResearchTime>5</ResearchTime>
     <GoldBenefits>5</GoldBenefits>
     <WoodBenefits>5</WoodBenefits>
   </Technology>

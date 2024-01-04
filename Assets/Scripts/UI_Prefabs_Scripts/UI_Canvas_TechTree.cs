@@ -39,6 +39,7 @@ public class UI_Canvas_TechTree : MonoBehaviour
             TMP_Text statsText = infoPopUpCanvas.transform.Find("stats")?.GetComponentInChildren<TMP_Text>();
             TMP_Text DescriptionText = infoPopUpCanvas.transform.Find("description")?.GetComponentInChildren<TMP_Text>();
             TMP_Text infoPriceText = infoPopUpCanvas.transform.Find("priceTag")?.GetComponentInChildren<TMP_Text>();
+            GameObject loadingBar = techSlots[index].transform.Find("LoadingBar")?.gameObject;
 
             Debug.Log(index);
             namePanel.text =  gm.technologies[index].Name;
@@ -46,7 +47,7 @@ public class UI_Canvas_TechTree : MonoBehaviour
 
 
             slotButton.onClick.AddListener(() => {
-                techEngine.BuyTech(index);
+                techEngine.BuyTech(index, loadingBar);
             });
             
             popUpInfoButton.onClick.AddListener(() => {

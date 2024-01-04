@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<TechnologyTree xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Technology>
+    <ID>1</ID>
+    <Name>Green Advantage Haven</Name>
+    <Description>Enhances wood production.</Description>
+    <CostGold>14</CostGold>
+    <CostWood>12</CostWood>
+    <State>Locked</State>
+    <ResearchTime>900</ResearchTime>
+    <GoldBenefits>6</GoldBenefits>
+    <WoodBenefits>1</WoodBenefits>
+  </Technology>
+  <Technology>
+    <ID>2</ID>
+    <Name>Eco Enhancer Oasis</Name>
+    <Description>Gives a boost to gold production.</Description>
+    <CostGold>19</CostGold>
+    <CostWood>3</CostWood>
+    <State>Locked</State>
+    <ResearchTime>700</ResearchTime>
+    <GoldBenefits>4</GoldBenefits>
+    <WoodBenefits>0</WoodBenefits>
+  </Technology>
+  <Technology>
+    <ID>3</ID>
+    <Name>Nature Enhancer City</Name>
+    <Description>Enhances wood production.</Description>
+    <CostGold>19</CostGold>
+    <CostWood>2</CostWood>
+    <State>Locked</State>
+    <ResearchTime>300</ResearchTime>
+    <GoldBenefits>1</GoldBenefits>
+    <WoodBenefits>7</WoodBenefits>
+  </Technology>
+</TechnologyTree>

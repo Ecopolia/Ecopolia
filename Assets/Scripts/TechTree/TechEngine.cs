@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class TechEngine : MonoBehaviour
 {
@@ -18,12 +20,13 @@ public class TechEngine : MonoBehaviour
     }
 
 
-    public void BuyTech(int id){
+    public void BuyTech(int id, GameObject loadingBar){
         gm = FindObjectOfType<GameManager>();
 
         var specificTech = gm.technologies.Find((x) => x.ID == id);
         if (specificTech != null && specificTech.State == "Locked")
         {
+            Debug.Log("Buying technology: " + specificTech.Name);
             int requiredGold = specificTech.CostGold;
             int requiredWood = specificTech.CostWood;
 
@@ -33,7 +36,8 @@ public class TechEngine : MonoBehaviour
                 gm.DeductResources(requiredGold, requiredWood);
 
                 specificTech.State = "Upgrading";
-                StartCoroutine(CompletePurchaseWithDelay(specificTech));
+                StartCoroutine(displayLoadingBar(specificTech, loadingBar));
+                StartCoroutine(CompletePurchaseWithDelay(specificTech, loadingBar));
 
             }
             else
@@ -50,24 +54,34 @@ public class TechEngine : MonoBehaviour
         }
 
     }
-    private IEnumerator<WaitForSeconds> CompletePurchaseWithDelay(Technology specificTech)
+    private IEnumerator<WaitForSeconds> CompletePurchaseWithDelay(Technology specificTech, GameObject loadingBar)
     {
         //var technologyButton = gameObject.GetComponent<Button>();
         int secondsRemaining = specificTech.ResearchTime;
+        TMP_Text loadingBarTimerText = loadingBar.transform.Find("timer_text")?.GetComponentInChildren<TMP_Text>();
         while (secondsRemaining > 0)
         {
             //technologyButton.GetComponentInChildren<TextMeshProUGUI>().text = "Recherche en cours... (" + secondsRemaining + "s)\n Cliquez pour passer avec "+secondsRemaining/5+" gemmes";
-            Debug.Log(secondsRemaining);
+            loadingBarTimerText.text = string.Format("{0:D2}:{1:D2}:{2:D2}", secondsRemaining / 3600, (secondsRemaining / 60) % 60, secondsRemaining % 60);
+
             yield return new WaitForSeconds(1f);
             secondsRemaining--;
         }
 
 
-        increaseMoney(specificTech.GoldBenefits);
-        increaseWood(specificTech.WoodBenefits);
+
+        unlockTech(specificTech);
         Debug.Log("Coroutine benefit used");
-        //UpdateTechStateInXML(specificTech.ID, "Unlocked");
-        specificTech.State = "Unlocked";
+    }
+
+    private IEnumerator<WaitForSeconds> displayLoadingBar(Technology specificTech, GameObject loadingBar)
+    {
+        while(specificTech.State == "Upgrading")
+        {
+            loadingBar.SetActive(true);
+            yield return new WaitForSeconds(1f);
+        }
+        loadingBar.SetActive(false);
     }
     public void increaseMoney(int percent, string id = null){
         Debug.Log("ici");
@@ -92,8 +106,12 @@ public class TechEngine : MonoBehaviour
                 }
             }
         }
+    }
 
-        
+    public void unlockTech(Technology specificTech){
+        increaseMoney(specificTech.GoldBenefits);
+        increaseWood(specificTech.WoodBenefits);
+        specificTech.State = "Unlocked";
     }
 
         public void increaseWood(int percent, string id = null){

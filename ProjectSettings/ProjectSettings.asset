@@ -134,8 +134,11 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.0.0
-  preloadedAssets: []
+  bundleVersion: 2.0.1
+  preloadedAssets:
+  - {fileID: 11400000, guid: 8c062cd5dbd992444b8910aa23cd96a3, type: 2}
+  - {fileID: 11400000, guid: 161c0f0d771d00c46ac789c8d283abe0, type: 2}
+  - {fileID: -8905871629786734643, guid: 230bfa74579a4f043be26c0fc5fb04d3, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -253,15 +256,15 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{inproject}: user.keystore'
-  AndroidKeyaliasName: eco-polia
+  AndroidKeystoreName: '{inproject}: deployment.keystore'
+  AndroidKeyaliasName: deploy
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 0
+  androidUseCustomKeystore: 1
   m_AndroidBanners:
   - width: 320
     height: 180
