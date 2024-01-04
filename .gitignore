@@ -73,3 +73,4 @@ crashlytics-build.properties
 
 commit.sh
 migration/
+randomly_generated.xml

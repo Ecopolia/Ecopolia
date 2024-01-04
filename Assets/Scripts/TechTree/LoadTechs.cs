@@ -109,17 +109,20 @@ public class LoadTechs : MonoBehaviour
 
         for (int i = 1; i <= depth; i++)
         {
+            int gold = UnityEngine.Random.Range(0, 10);
+            int wood = UnityEngine.Random.Range(0, 10);
+            BenefitType benefitType = DetermineBenefitType(gold, wood);
             Technology tech = new Technology
             {
                 ID = techTree.technologies.Count + i,
-                Name = GenerateEcoName(),
-                Description = GenerateDescription(),
+                Name = GenerateEcoName(benefitType),
+                Description = GenerateDescription(benefitType),
                 CostGold = UnityEngine.Random.Range(0, 20),
                 CostWood = UnityEngine.Random.Range(0, 20),
                 State = "Locked",
                 ResearchTime = UnityEngine.Random.Range(1, 10) * 100,
-                GoldBenefits = UnityEngine.Random.Range(0, 10),
-                WoodBenefits = UnityEngine.Random.Range(0, 10),
+                GoldBenefits = gold,
+                WoodBenefits = wood,
             };
 
             newTechs.Add(tech);
@@ -128,7 +131,7 @@ public class LoadTechs : MonoBehaviour
         return newTechs;
     }
 
-    string GenerateEcoName()
+    string GenerateEcoName(BenefitType benefitType)
     {
         string[] prefixes = { "Eco", "Green", "Sustainable", "Nature", "Harmony" };
         string[] suffixes = { "City", "Village", "Settlement", "Haven", "Oasis" };
@@ -136,16 +139,16 @@ public class LoadTechs : MonoBehaviour
         string prefix = prefixes[UnityEngine.Random.Range(0, prefixes.Length)];
         string suffix = suffixes[UnityEngine.Random.Range(0, suffixes.Length)];
 
-        // Determine the benefit type
-        BenefitType benefitType = DetermineBenefitType();
-
         return $"{prefix} {benefitType} {suffix}";
     }
 
-    private BenefitType DetermineBenefitType()
+    private BenefitType DetermineBenefitType(int goldBenefits, int woodBenefits)
     {
-        bool hasGoldBenefit = UnityEngine.Random.Range(0, 2) == 0; // 50% chance of having a gold benefit
-        bool hasWoodBenefit = UnityEngine.Random.Range(0, 2) == 0; // 50% chance of having a wood benefit
+        // Determine the benefit type if more goldbenefits than woodbenefits or vice versa
+        bool hasGoldBenefit = goldBenefits > woodBenefits;
+        bool hasWoodBenefit = woodBenefits > goldBenefits;
+
+        bool hasBothBenefits = woodBenefits == goldBenefits;
 
         if (hasGoldBenefit && hasWoodBenefit)
         {
@@ -163,10 +166,8 @@ public class LoadTechs : MonoBehaviour
         return BenefitType.Technology; // Default if no specific benefit is determined
     }
 
-
-    string GenerateDescription()
+    string GenerateDescription(BenefitType benefitType)
     {
-        BenefitType benefitType = DetermineBenefitType();
 
         switch (benefitType)
         {
