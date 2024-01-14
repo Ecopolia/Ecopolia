@@ -101,6 +101,7 @@ MonoBehaviour:
   id: 5dfae78f-b9f3-43ff-a2d6-ad51316a4b3f
   moneyCost: 15
   woodCost: 5
+  pollution: 2
   moneyIncrease: 5
   woodIncrease: 0
   timeBtwIncrease: 2
@@ -110,6 +111,7 @@ MonoBehaviour:
   timeBuild: 0
   timeLeft: 0
   buildingName: building 2
+  description: 
   buttonObject: {fileID: 5774284580129060958, guid: 25e8ff976cb950f49afa0b87d2d8facd, type: 3}
   buildingUp: {fileID: 0}
 --- !u!65 &3634524610084525510

@@ -8,6 +8,7 @@ public class GameData
     public int money;
     public int wood;
     public int gemme;
+    public int pollution;
     public float temperature;
     public float air;
     public string saison;
@@ -21,6 +22,7 @@ public class GameData
         this.money = 100;
         this.wood = 100;
         this.gemme = 5;
+        this.pollution = 0;
         this.temperature = 25;
         this.air = 1;
         this.saison = "été";

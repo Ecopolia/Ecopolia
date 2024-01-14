@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public int money;
     public int wood;
     public int gemme;
+    public int pollution;
     public List<Building> buildings = new List<Building>();
     public List<Building> buildingsPrefabs = new List<Building>();
     public List<StoneScript> stones = new List<StoneScript>();
@@ -85,18 +86,26 @@ public class GameManager : MonoBehaviour, IDataPersistence
             buildingToUp.gameObject.SetActive(false);
             stone.build = buildingToPlace;
 
-            foreach (var building in buildings)
-            {
-                Debug.Log(building);
-                if(buildingToUp == building){
-                    Debug.Log("oui");
-                }
-            }
+            // foreach (var building in buildings)
+            // {
+            //     Debug.Log(building);
+            //     if(buildingToUp == building){
+            //         Debug.Log("oui");
+            //     }
+            // }
         }
 
         buildingToPlace.stone = stone;
+        actuPollution();
         
-        
+    }
+
+    public void actuPollution(){
+        this.pollution = 0;
+        foreach (var building in buildings){
+            this.pollution += building.pollution;
+        }
+
     }
 
     // Permet de dire si le menu est open ou fermé au Stone avec comme paramètre un booléen true/false pour open/close
@@ -191,6 +200,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         this.money = data.money;
         this.wood = data.wood;
         this.gemme = data.gemme;
+        this.pollution = data.pollution;
     }
 
     // Save la data dans la save
@@ -198,6 +208,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         data.money = this.money;
         data.wood = this.wood;
         data.gemme = this.gemme;
+        data.pollution = this.pollution;
     }
 
 }

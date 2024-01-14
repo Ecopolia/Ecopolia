@@ -13,11 +13,13 @@ public class Building : MonoBehaviour
     }
     public int moneyCost;
     public int woodCost;
+    public int pollution;
+    private int totalpollution;
     public int moneyIncrease;
     public int woodIncrease;
     public float timeBtwIncrease;
     private float nextIncreaseTime;
-    private GameManager gm;
+    public GameManager gm;
     public StoneScript stone;
     public Building buildingToPlace = null;
     public float timeToBuild;
@@ -57,18 +59,23 @@ public class Building : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gm = FindObjectOfType<GameManager>();
+        this.gm = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        this.totalpollution = gm.pollution;
         if(Time.time >= nextIncreaseTime){
             nextIncreaseTime = Time.time + timeBtwIncrease;
-            gm.money += moneyIncrease;
-            gm.wood += woodIncrease;
+            if(this.totalpollution > 0){
+                gm.money += moneyIncrease - (moneyIncrease * ( this.totalpollution / 100 ));
+                gm.wood += woodIncrease - (woodIncrease * ( this.totalpollution / 100 ));
+            } else {
+                gm.money += moneyIncrease;
+                gm.wood += woodIncrease;
+            }
         }
-
 
         if(buildingToPlace != null){
             if(Time.time >= timeBuild){
@@ -82,13 +89,23 @@ public class Building : MonoBehaviour
     // Calcule et renvoie la money par heure
     public float CalculateMoneyRevenuePerHour()
     {
-        return moneyIncrease * (3600 / timeBtwIncrease);
+        if(totalpollution > 0){
+            return (moneyIncrease - (moneyIncrease * ( this.totalpollution / 100 ))) * (3600 / timeBtwIncrease);
+        } else {
+            return moneyIncrease * (3600 / timeBtwIncrease);
+        }
+        
     }
 
     // Calcule et renvoie le bois par heure
     public float CalculateWoodRevenuePerHour()
     {
-        return woodIncrease * (3600 / timeBtwIncrease);
+        if(totalpollution > 0){
+            return (woodIncrease - (woodIncrease * ( this.totalpollution / 100 ))) * (3600 / timeBtwIncrease);
+        } else {
+            return woodIncrease * (3600 / timeBtwIncrease);
+        }
+        
     }
 
 }
